@@ -18,5 +18,11 @@ export default {
       url: '/post?query=title.contains:' + query,
       method: 'get'
     })
-  }
+  },
+  getMyloveList(offset, limit=10) {
+    return request({
+      url: '/mylove?sortby=createTime&order=desc&limit='+ limit +'&offset=' + offset,
+      method: 'get'
+    })
+  },
 }

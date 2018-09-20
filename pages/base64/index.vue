@@ -54,6 +54,7 @@
 <script>
 import some from 'lodash/some'
 export default {
+  layout: 'screen',
   data() {
     return {
       imgToBase64: {

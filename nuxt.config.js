@@ -12,8 +12,9 @@ module.exports = {
   },
   loading: { color: '#3B8070' },
   plugins: [
-    '~plugins/polyfill',
-    '~plugins/ant-design-vue',
+    '~/plugins/polyfill',
+    '~/plugins/ant-design-vue',
+    '~/plugins/date-time-formatter',
     {
       src: '~/plugins/vue-infinite-scroll',
       ssr: false
@@ -32,6 +33,7 @@ module.exports = {
       '~/plugins/vue-infinite-scroll',
       '~/plugins/ant-design-vue',
       '~/plugins/markdown-it-vue',
+      '~/plugins/date-time-formatter',
       'axios'
     ],
     extend (config, { isDev, isClient }) {

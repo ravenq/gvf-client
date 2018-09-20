@@ -46,5 +46,14 @@ export default {
   text-align: center;
   background-color: #ffffff;
 }
+#__nuxt {
+  height: 100%;
+}
+#__layout {
+  height: 100%;
+}
+.default-layout-container {
+  height: 100%;
+}
 </style>
 

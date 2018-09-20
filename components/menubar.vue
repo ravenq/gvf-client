@@ -38,7 +38,7 @@
           <router-link to="/mylove"><a-icon type="heart-o" />Mylove</router-link>
         </a-menu-item>
         <a-menu-item key="base64">
-          <router-link to="/base64"><a-icon type="base64" />Base64</router-link>
+          <router-link to="/base64"><a-icon type="tool" />Base64</router-link>
         </a-menu-item>
         <a-menu-item key="aboutme">
           <router-link to="/aboutme"><a-icon type="user" />Aboutme</router-link>

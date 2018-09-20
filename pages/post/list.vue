@@ -74,14 +74,13 @@ export default {
       return truncate(val, {length: 300})
     },
     handleInfiniteOnLoad () {
-      let self = this;
       this.loading = true
-      api.getPostList(this.loadOffset).then(function (res) {
+      api.getPostList(this.loadOffset).then(res => {
         if (res.data) {
-          self.postList = self.postList.concat(res.data)
+          this.postList = this.postList.concat(res.data)
         }
-        self.loading = false
-        self.loadOffset += 10
+        this.loading = false
+        this.loadOffset += 10
       })
     }
   }
