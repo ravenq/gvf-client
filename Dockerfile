@@ -1,4 +1,4 @@
-FROM node:8-alphine
+FROM node:8-alpine
 
 LABEL maintainer=ravenq<flw_dream@126.com>
 
@@ -9,7 +9,7 @@ WORKDIR /gvf-client
 EXPOSE 3000
 
 # build
-RUN npm install && npm run build
+RUN npm install -g yarn && yarn && yarn build
 
 # launches
-CMD ["npm run start"]
+CMD ["npm", "start"]
