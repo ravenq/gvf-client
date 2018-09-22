@@ -20,7 +20,7 @@ import api from '~/api'
 import truncate from 'lodash/truncate'
 export default {
   mounted() {
-    api.getPostList(0, 5).then(res => {
+    api.getHotPostList().then(res => {
       if (res.data) {
         this.postList = res.data
       }

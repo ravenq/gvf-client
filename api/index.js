@@ -7,6 +7,12 @@ export default {
       method: 'get'
     })
   },
+  getHotPostList(limit=5) {
+    return request({
+      url: '/post?sortby=visit&order=desc&limit='+ limit,
+      method: 'get'
+    })
+  },
   getPost(id) {
     return request({
       url: '/post/' + id,

@@ -1,12 +1,12 @@
 <template>
   <a-layout>
     <a-affix>
-      <a-layout-header class="post-header">
+      <a-layout-header class="layout-header">
         <menubar/>
       </a-layout-header>
     </a-affix>
     <a-layout>
-      <a-layout-content class="post-content">
+      <a-layout-content class="layout-content">
         <a-row>
           <a-col :span="2"></a-col>
           <a-col :span="15">
@@ -15,7 +15,7 @@
            <a-col :span="1"></a-col>
           <a-col :span="4">
             <a-affix :offsetTop="66">
-              <aboutme  class="right-panel"></aboutme>
+              <gvf-project  class="right-panel"></gvf-project>
               <hot-post class="right-panel"></hot-post>
             </a-affix>
           </a-col>
@@ -23,7 +23,7 @@
         </a-row>
       </a-layout-content>
     </a-layout>
-    <a-layout-footer class="post-footer">
+    <a-layout-footer class="layout-footer">
      <my-footer></my-footer>
     </a-layout-footer>
   </a-layout>
@@ -32,13 +32,13 @@
 <script>
 import Menubar from '~/components/menubar'
 import HotPost from '~/components/hot-post'
-import Aboutme from '~/components/aboutme'
+import GvfProject from '~/components/gvf-project'
 import MyFooter from '~/components/footer'
 export default {
   components: {
     Menubar,
     HotPost,
-    Aboutme,
+    GvfProject,
     MyFooter
   }
 }
@@ -51,14 +51,14 @@ export default {
 .ant-layout-sider {
   background: #ffffff;
 }
-.post-header {
+.layout-header {
   padding: 0px;
 }
-.post-content {
+.layout-content {
   background-color: white;
 }
 
-.post-footer {
+.layout-footer {
   text-align: center;
   background-color: #ffffff;
 }

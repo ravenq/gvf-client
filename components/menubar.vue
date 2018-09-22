@@ -3,7 +3,7 @@
     <a-col :span="6">
       <a-row justify="start">
         <a-col :span="6">
-          <img class="logo" alt="logo" height="32" src="/logo.png">
+          <!-- <img class="logo" alt="logo" height="32" src="/logo.png"> -->
         </a-col>
         <a-col :span="14">
           <a-select
@@ -34,15 +34,18 @@
         <a-menu-item key="post">
           <router-link to="/post/list"><a-icon type="book" />Blog</router-link>
         </a-menu-item>
-        <a-menu-item key="mylove">
-          <router-link to="/mylove"><a-icon type="heart-o" />Mylove</router-link>
+        <a-menu-item key="markdown">
+          <router-link to="/markdown"><a-icon type="file-markdown" />Markdown</router-link>
         </a-menu-item>
         <a-menu-item key="base64">
-          <router-link to="/base64"><a-icon type="tool" />Base64</router-link>
+          <router-link to="/base64"><a-icon type="inbox" />Base64</router-link>
         </a-menu-item>
-        <a-menu-item key="aboutme">
+        <a-menu-item key="mylove">
+          <router-link to="/mylove"><a-icon type="heart-o" />Mylive</router-link>
+        </a-menu-item>
+        <!-- <a-menu-item key="aboutme">
           <router-link to="/aboutme"><a-icon type="user" />Aboutme</router-link>
-        </a-menu-item>
+        </a-menu-item> -->
       </a-menu>
     </a-col>
   </a-row>

@@ -5,7 +5,7 @@
       :bordered="false" 
       style="width: 240px"
     >
-      <img class="avatar" src="/aquarius-symbol.png" slot="cover"/>
+      <img class="avatar" src="/gvf-project.png" slot="cover"/>
       <a-card-meta
         title="The GVF Project">
         <template slot="description">
@@ -62,7 +62,7 @@ export default {
 #aboutme-container .avatar {
   margin-left: 22px;
   width: 128px;
-  height: 128px;
+  height: 90px;
   border-radius: 4px;
 }
 

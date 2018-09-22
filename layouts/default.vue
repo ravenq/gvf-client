@@ -1,16 +1,16 @@
 <template>
   <a-layout class="default-layout-container">
     <a-affix>
-      <a-layout-header class="post-header">
+      <a-layout-header class="layout-header">
         <menubar/>
       </a-layout-header>
     </a-affix>
     <a-layout>
-      <a-layout-content class="post-content">
+      <a-layout-content class="layout-content">
         <nuxt/>
       </a-layout-content>
     </a-layout>
-    <a-layout-footer class="post-footer">
+    <a-layout-footer class="layout-footer">
       <my-footer></my-footer>
     </a-layout-footer>
   </a-layout>
@@ -35,14 +35,14 @@ export default {
 .ant-layout-sider {
   background: #ffffff;
 }
-.post-header {
+.layout-header {
   padding: 0px;
 }
-.post-content {
+.layout-content {
   background-color: white;
 }
 
-.post-footer {
+.layout-footer {
   text-align: center;
   background-color: #ffffff;
 }
