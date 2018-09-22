@@ -31,5 +31,11 @@
     "node-sass": "^4.9.1",
     "sass-loader": "^7.0.3",
     "yarn": "^1.9.4"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "80"
+    }
   }
 }
