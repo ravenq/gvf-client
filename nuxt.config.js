@@ -21,8 +21,7 @@ module.exports = {
     }, {
       src: '~/plugins/vue-virtual-scroller',
       ssr: false
-    },
-    {
+    }, {
       src: '~/plugins/markdown-it-vue',
       ssr: false
     }

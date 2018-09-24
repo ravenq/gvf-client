@@ -11,8 +11,8 @@
         <template slot="description">
           <p>GVF 项目是由 GO 作为后端、Vue 作为 PC 前端、Flutter 作为移动端构建的现代互联网应用框架示例。本博客使用 GVF 项目构建。</p>
           <a-row type="flex" justify="start">
-            <strong class="project-title">gvf-service:</strong>
-            <iframe src="//ghbtns.com/github-btn.html?user=ravenq&repo=markdown-it-vue&type=watch&count=true" 
+            <strong class="project-title">gvf-server:</strong>
+            <iframe src="//ghbtns.com/github-btn.html?user=ravenq&repo=gvf-server&type=watch&count=true" 
               allowtransparency="true" 
               frameborder="0" 
               scrolling="0" 
@@ -22,7 +22,7 @@
           </a-row>
           <a-row type="flex" justify="start">
             <strong class="project-title2">gvf-client:</strong>
-            <iframe src="//ghbtns.com/github-btn.html?user=ravenq&repo=markdown-it-vue&type=watch&count=true" 
+            <iframe src="//ghbtns.com/github-btn.html?user=ravenq&repo=gvf-client&type=watch&count=true" 
               allowtransparency="true" 
               frameborder="0" 
               scrolling="0" 
@@ -31,8 +31,8 @@
             </iframe>
           </a-row>
           <a-row type="flex" justify="start">
-            <strong class="project-title">gvf-mobile:</strong>
-            <iframe src="//ghbtns.com/github-btn.html?user=ravenq&repo=markdown-it-vue&type=watch&count=true" 
+            <strong class="project-title">gvf-admin:</strong>
+            <iframe src="//ghbtns.com/github-btn.html?user=ravenq&repo=gvf-admin&type=watch&count=true" 
               allowtransparency="true" 
               frameborder="0" 
               scrolling="0" 
