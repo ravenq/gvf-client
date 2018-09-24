@@ -6,7 +6,7 @@ LABEL maintainer=ravenq<flw_dream@126.com>
 COPY . /gvf-client
 WORKDIR /gvf-client
 
-EXPOSE 3000
+EXPOSE 80
 
 # build
 RUN npm install -g yarn && yarn && yarn build
