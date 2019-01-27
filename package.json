@@ -15,7 +15,7 @@
   "dependencies": {
     "ant-design-vue": "^1.0.3",
     "axios": "^0.18.0",
-    "markdown-it-vue": "^1.0.5",
+    "markdown-it-vue": "^1.0.6",
     "nuxt": "^1.4.2",
     "vue-infinite-scroll": "^2.0.2",
     "vue-virtual-scroller": "^0.12.0"
