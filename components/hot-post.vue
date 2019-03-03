@@ -1,14 +1,22 @@
 <template>
-  <a-card title="热门文章" :bordered="false" id="hot-post-container" >
+  <a-card
+    title="热门文章"
+    :bordered="false"
+    id="hot-post-container"
+  >
     <a-list
       itemLayout="horizontal"
       :dataSource="postList"
     >
-      <a-list-item slot="renderItem" slot-scope="item, index">
+      <a-list-item
+        slot="renderItem"
+        slot-scope="item"
+      >
         <a-list-item-meta>
-          <nuxt-link slot="title" :to="{path:'/post/content', query:{id: item.id}}">
-              {{truncatTitle(item.title)}}
-            </nuxt-link>
+          <nuxt-link
+            slot="title"
+            :to="{path:'/post/content', query:{id: item.id}}"
+          >{{truncatTitle(item.title)}}</nuxt-link>
         </a-list-item-meta>
       </a-list-item>
     </a-list>
@@ -33,8 +41,8 @@ export default {
   },
   methods: {
     truncatTitle(val) {
-      return truncate(val, {length: 20})
-    },
+      return truncate(val, { length: 20 })
+    }
   }
 }
 </script>
@@ -45,7 +53,7 @@ export default {
 }
 
 #hot-post-container .ant-list-item {
-    padding-top: 6px;
-    padding-bottom: 6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 </style>

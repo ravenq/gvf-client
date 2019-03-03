@@ -4,19 +4,40 @@
     size="large"
   >
     <virtual-scroller
-        style="height: 100%"
-        item-height="73"
-        :items="postList"
-        page-mode
-        v-infinite-scroll="handleInfiniteOnLoad"
-        :infinite-scroll-disabled="busy"
-        :infinite-scroll-distance="10"
+      style="height: 100%"
+      item-size="185.8"
+      :items="postList"
+      page-mode
+      v-infinite-scroll="handleInfiniteOnLoad"
+      :infinite-scroll-disabled="busy"
+      :infinite-scroll-distance="10"
     >
-      <a-list-item slot-scope="{item}" :key="item.index">
+      <a-list-item
+        slot-scope="{item}"
+        :key="item.index"
+      >
         <template slot="actions">
-          <span><a-icon type="star-o" style="margin-right: 8px" />{{item.visit || 0}}</span>
-          <span><a-icon type="like-o" style="margin-right: 8px" />{{item.visit || 0}}</span>
-          <span><a-icon type="message" style="margin-right: 8px" />{{item.visit || 0}}</span>
+          <span>
+            <a-icon
+              type="star-o"
+              style="margin-right: 8px"
+            />
+            {{item.visit || 0}}
+          </span>
+          <span>
+            <a-icon
+              type="like-o"
+              style="margin-right: 8px"
+            />
+            {{item.visit || 0}}
+          </span>
+          <span>
+            <a-icon
+              type="message"
+              style="margin-right: 8px"
+            />
+            {{item.visit || 0}}
+          </span>
         </template>
         <!-- <img slot="extra" width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" /> -->
         <a-list-item-meta>
@@ -25,18 +46,31 @@
               :category="item.category.name"
               :tags="item.tags"
               :visit="item.visit"
-              :pubTime="item.pubTime">
-            </post-info>
+              :pubTime="item.pubTime"
+            ></post-info>
           </div>
-          <router-link slot="title" :to="{path:'/post/content', query:{id: item.id}}">
-            <img class="post-type-img" :src="postTypeUrl(item.postType)" /> {{item.title}}
+          <router-link
+            slot="title"
+            :to="{path:'/post/content', query:{id: item.id}}"
+          >
+            <img
+              class="post-type-img"
+              :src="postTypeUrl(item.postType)"
+            >
+            {{item.title}}
           </router-link>
-          <a-avatar slot="avatar" src="/logo.png" />
+          <a-avatar
+            slot="avatar"
+            src="/logo.png"
+          />
         </a-list-item-meta>
         <div>{{truncateSummary(item.summary)}}</div>
       </a-list-item>
     </virtual-scroller>
-    <a-spin v-if="loading && !busy" class="post-list-loading" />
+    <a-spin
+      v-if="loading && !busy"
+      class="post-list-loading"
+    />
   </a-list>
 </template>
 <script>
@@ -49,7 +83,7 @@ export default {
   components: {
     PostInfo
   },
-  data () {
+  data() {
     return {
       postList: [],
       loading: false,
@@ -60,20 +94,20 @@ export default {
   methods: {
     postTypeUrl(val) {
       let ret = '/post-origin.png'
-      switch(val) {
+      switch (val) {
         case 1:
-        ret = '/post-repost.png'
-        break
+          ret = '/post-repost.png'
+          break
         case 2:
-        ret = '/post-translate.png'
-        break
+          ret = '/post-translate.png'
+          break
       }
       return ret
     },
     truncateSummary(val) {
-      return truncate(val, {length: 300})
+      return truncate(val, { length: 300 })
     },
-    handleInfiniteOnLoad () {
+    handleInfiniteOnLoad() {
       this.loading = true
       api.getPostList(this.loadOffset).then(res => {
         if (res.data) {

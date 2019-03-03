@@ -11,14 +11,18 @@
               :showUploadList="false"
               :beforeUpload="handleSelectImg"
             >
-              <img v-if="imgToBase64.imageUrl" class="to-base64-img" :src="imgToBase64.imageUrl" />
+              <img
+                v-if="imgToBase64.imageUrl"
+                class="to-base64-img"
+                :src="imgToBase64.imageUrl"
+              >
               <div v-else>
-              <a-icon type="plus" />
+                <a-icon type="plus" />
                 <div>选取图片</div>
               </div>
             </a-upload>
-            <a-textarea 
-              class="base64-input" 
+            <a-textarea
+              class="base64-input"
               :value="imgToBase64.imageUrl"
               placeholder="若图片较大等待时间会比较长！"
             />
@@ -38,7 +42,11 @@
               :showUploadList="false"
               :beforeUpload="handleSelectImg"
             >
-              <img v-if="base64Toimg.imageUrl" class="to-base64-img" :src="base64Toimg.imageUrl" />
+              <img
+                v-if="base64Toimg.imageUrl"
+                class="to-base64-img"
+                :src="base64Toimg.imageUrl"
+              >
               <div v-else>
                 <div>暂无图片</div>
               </div>
@@ -76,7 +84,7 @@ export default {
       }
       this.imgToBase64.loading = true
       let reader = new FileReader()
-      reader.onload = (e) => {
+      reader.onload = e => {
         this.imgToBase64.imageUrl = e.target.result
         this.imgToBase64.loading = false
       }

@@ -18,8 +18,15 @@
             placeholder="search post..."
             :notFoundContent="fetching ? undefined : null"
           >
-            <a-spin v-if="fetching" slot="notFoundContent" size="small"/>
-            <a-select-option v-for="d in data" :key="d.value">{{d.text}}</a-select-option>
+            <a-spin
+              v-if="fetching"
+              slot="notFoundContent"
+              size="small"
+            />
+            <a-select-option
+              v-for="d in data"
+              :key="d.value"
+            >{{d.text}}</a-select-option>
           </a-select>
         </a-col>
       </a-row>
@@ -32,20 +39,28 @@
         :style="{ lineHeight: '64px', width:'100%' }"
       >
         <a-menu-item key="post">
-          <router-link to="/post/list"><a-icon type="book" />Blog</router-link>
+          <router-link to="/post/list">
+            <a-icon type="book" />Blog
+          </router-link>
         </a-menu-item>
         <a-menu-item key="markdown">
-          <router-link to="/markdown"><a-icon type="file-markdown" />Markdown</router-link>
+          <router-link to="/markdown">
+            <a-icon type="file-markdown" />Markdown
+          </router-link>
         </a-menu-item>
         <a-menu-item key="base64">
-          <router-link to="/base64"><a-icon type="inbox" />Base64</router-link>
+          <router-link to="/base64">
+            <a-icon type="inbox" />Base64
+          </router-link>
         </a-menu-item>
         <a-menu-item key="mylove">
-          <router-link to="/mylove"><a-icon type="heart-o" />Mylive</router-link>
+          <router-link to="/mylove">
+            <a-icon type="heart-o" />Mylive
+          </router-link>
         </a-menu-item>
         <!-- <a-menu-item key="aboutme">
           <router-link to="/aboutme"><a-icon type="user" />Aboutme</router-link>
-        </a-menu-item> -->
+        </a-menu-item>-->
       </a-menu>
     </a-col>
   </a-row>

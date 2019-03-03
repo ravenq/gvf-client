@@ -1,11 +1,7 @@
 <template>
-  <section>
-     GVF ©2018 Created by ravenq
-  </section>
+  <section>GVF ©2018 Created by ravenq</section>
 </template>
 
 <script>
-export default {
-  
-}
+export default {}
 </script>

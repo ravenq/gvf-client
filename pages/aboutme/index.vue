@@ -1,10 +1,7 @@
 <template>
-  <section>
-    aboutme
-  </section>
+  <section>aboutme</section>
 </template>
 
 <script>
-export default {
-}
+export default {}
 </script>

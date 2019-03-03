@@ -1,5 +1,5 @@
 <template>
-  <post-list/>
+  <post-list />
 </template>
 
 <script>

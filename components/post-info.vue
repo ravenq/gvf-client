@@ -1,20 +1,40 @@
 <template>
   <div class="post-info">
-    <div v-if="category" class="post-info-item">
-      分类: <a>{{category}}</a>
+    <div
+      v-if="category"
+      class="post-info-item"
+    >分类:
+      <a>{{category}}</a>
     </div>
-    <div v-if="category" class="post-info-item">|</div>
-    <div v-if="tags" class="post-info-item">
-      标签: <a v-for="(tag, index) in tagArr" :key="index">  {{tag}}</a>
+    <div
+      v-if="category"
+      class="post-info-item"
+    >|</div>
+    <div
+      v-if="tags"
+      class="post-info-item"
+    >标签:
+      <a
+        v-for="(tag, index) in tagArr"
+        :key="index"
+      >{{tag}}</a>
     </div>
-    <div v-if="tags" class="post-info-item">|</div>
-    <div v-if="visit > 0" class="post-info-item">
-      阅读: {{visit}} 次 
-    </div>
-    <div v-if="visit" class="post-info-item">|</div>
-    <div v-if="pubTime" class="post-info-item">
-      发布: {{pubTimeStr}}
-    </div>
+    <div
+      v-if="tags"
+      class="post-info-item"
+    >|</div>
+    <div
+      v-if="visit > 0"
+      class="post-info-item"
+    >阅读: {{visit}} 次</div>
+    <div
+      v-if="visit"
+      class="post-info-item"
+    >|</div>
+    <div
+      v-if="pubTime"
+      class="post-info-item"
+    >发布: {{pubTimeStr}}</div>
   </div>
 </template>
 

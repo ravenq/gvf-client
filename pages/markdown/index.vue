@@ -1,39 +1,54 @@
 <template>
   <a-row class="full-container">
-    <a-col :span="12" class="full-container">
+    <a-col
+      :span="12"
+      class="full-container"
+    >
       <div class="full-container m-input-container">
         <div class="mk-toolbar">
-         <a-icon class="mk-toolbar-item" type="delete" @click="handleDelete" />
-         <a-icon class="mk-toolbar-item" type="sync" @click="handleReset" />
+          <a-icon
+            class="mk-toolbar-item"
+            type="delete"
+            @click="handleDelete"
+          />
+          <a-icon
+            class="mk-toolbar-item"
+            type="sync"
+            @click="handleReset"
+          />
         </div>
         <a-textarea
           :autosize="{ minRows: 26 }"
-          :rows=28
+          :rows="28"
           :resize="false"
           v-model="content"
-          class="m-input">
-        </a-textarea>
+          class="m-input"
+        />
       </div>
     </a-col>
-    <a-col :span="12" class="full-container">
-      <iframe src="//ghbtns.com/github-btn.html?user=ravenq&repo=markdown-it-vue&type=watch&count=true"
+    <a-col
+      :span="12"
+      class="full-container"
+    >
+      <iframe
+        src="//ghbtns.com/github-btn.html?user=ravenq&repo=markdown-it-vue&type=watch&count=true"
         class="markdown-it-vue-git"
-        allowtransparency="true" 
-        frameborder="0" 
-        scrolling="0" 
-        width="110" 
-        height="20">
-      </iframe>
+        allowtransparency="true"
+        frameborder="0"
+        scrolling="0"
+        width="110"
+        height="20"
+      />
       <a-divider class="mk-divider"></a-divider>
       <div class="full-container mk-container">
-        <markdown-it-vue :content="content"></markdown-it-vue>
+        <markdown-it-vue :content="content" />
       </div>
     </a-col>
   </a-row>
 </template>
 
 <script>
-import MKData from './example.js';
+import MKData from './example.js'
 export default {
   data() {
     return {
@@ -41,10 +56,10 @@ export default {
     }
   },
   methods: {
-    handleDelete () {
+    handleDelete() {
       this.content = ''
     },
-    handleReset () {
+    handleReset() {
       this.content = MKData
     }
   }
@@ -95,6 +110,5 @@ export default {
 .mk-divider {
   margin-top: 10px;
 }
-
 </style>
 

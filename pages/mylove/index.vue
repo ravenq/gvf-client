@@ -5,15 +5,15 @@
       <a-col :span="12">
         <a-timeline class="mylove-container">
           <virtual-scroller
-              style="height: 100%"
-              item-height="450"
-              :items="myloveList"
-              page-mode
-              v-infinite-scroll="handleInfiniteOnLoad"
-              :infinite-scroll-disabled="busy"
-              :infinite-scroll-distance="10"
+            style="height: 100%"
+            item-height="450"
+            :items="myloveList"
+            page-mode
+            v-infinite-scroll="handleInfiniteOnLoad"
+            :infinite-scroll-disabled="busy"
+            :infinite-scroll-distance="10"
           >
-            <a-timeline-item 
+            <a-timeline-item
               class="mylove-item"
               slot-scope="{item}"
               :key="item.id"
@@ -28,7 +28,7 @@
                 <img
                   :src="item.photo"
                   slot="cover"
-                />
+                >
                 <a-card-meta>
                   <template slot="description">{{item.content}}</template>
                 </a-card-meta>

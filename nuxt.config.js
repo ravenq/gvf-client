@@ -1,42 +1,31 @@
+const pkg = require('./package')
 module.exports = {
+  mode: 'spa',
   head: {
-    title: 'gvf-client',
+    title: pkg.name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'a vue blog.' }
+      { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  loading: { color: '#3B8070' },
+  loading: { color: '#fff' },
+  css: ['ant-design-vue/dist/antd.css'],
   plugins: [
-    '~/plugins/polyfill',
-    '~/plugins/ant-design-vue',
-    '~/plugins/date-time-formatter',
-    {
-      src: '~/plugins/vue-infinite-scroll',
-      ssr: false
-    }, {
-      src: '~/plugins/vue-virtual-scroller',
-      ssr: false
-    }, {
-      src: '~/plugins/markdown-it-vue',
-      ssr: false
-    }
+    '@/plugins/antd-ui',
+    '@/plugins/date-time-formatter',
+    '@/plugins/vue-infinite-scroll',
+    '@/plugins/vue-virtual-scroller',
+    '@/plugins/markdown-it-vue'
   ],
+  modules: ['@nuxtjs/axios'],
+  axios: {
+    baseURL: 'http://www.aqcoder.com:8080/v1'
+  },
   build: {
-    vendor: [
-      '~/plugins/vue-virtual-scroller',
-      '~/plugins/vue-infinite-scroll',
-      '~/plugins/ant-design-vue',
-      '~/plugins/markdown-it-vue',
-      '~/plugins/date-time-formatter',
-      'axios'
-    ],
-    extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
+    extend(config, ctx) {
+      if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -47,4 +36,3 @@ module.exports = {
     }
   }
 }
-
