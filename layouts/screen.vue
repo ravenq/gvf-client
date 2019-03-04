@@ -2,16 +2,16 @@
   <a-layout class="default-layout-container">
     <a-affix>
       <a-layout-header class="layout-header">
-        <menubar/>
+        <menubar />
       </a-layout-header>
     </a-affix>
     <a-layout>
       <a-layout-content class="layout-content">
-        <nuxt/>
+        <nuxt />
       </a-layout-content>
     </a-layout>
     <a-layout-footer class="layout-footer">
-      <my-footer></my-footer>
+      <my-footer />
     </a-layout-footer>
   </a-layout>
 </template>
@@ -56,4 +56,3 @@ export default {
   height: 100%;
 }
 </style>
-

@@ -1,11 +1,7 @@
-import api from '@/api'
-import { Message } from 'ant-design-vue'
+import { message } from 'ant-design-vue'
 import isEqual from 'lodash.isequal'
 
 export default function({ $axios, redirect }) {
-  // binding api
-  $axios.api = api
-
   $axios.onRequest(config => {
     const token = window.sessionStorage.token
     if (token) {
@@ -17,6 +13,7 @@ export default function({ $axios, redirect }) {
     if (isEqual(response.data.status, 0)) {
       return response.data
     } else {
+      message.error(JSON.stringify(response.data))
       return Promise.reject(response.data)
     }
   })
@@ -26,11 +23,7 @@ export default function({ $axios, redirect }) {
     if (code === 400) {
       redirect('/400')
     } else {
-      Message({
-        message: error.message,
-        type: 'error',
-        duration: 5 * 1000
-      })
+      message.error(JSON.stringify(error.message))
     }
   })
 }

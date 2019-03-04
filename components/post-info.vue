@@ -3,44 +3,55 @@
     <div
       v-if="category"
       class="post-info-item"
-    >分类:
-      <a>{{category}}</a>
+    >
+      分类:
+      <a>{{ category }}</a>
     </div>
     <div
       v-if="category"
       class="post-info-item"
-    >|</div>
-    <div
-      v-if="tags"
-      class="post-info-item"
-    >标签:
-      <a
-        v-for="(tag, index) in tagArr"
-        :key="index"
-      >{{tag}}</a>
+    >
+      |
     </div>
     <div
       v-if="tags"
       class="post-info-item"
-    >|</div>
+    >
+
+      标签:
+      <a
+        v-for="(tag, index) in tagArr"
+        :key="index"
+      >{{ tag }}</a>
+    </div>
+    <div
+      v-if="tags"
+      class="post-info-item"
+    >
+      |
+    </div>
     <div
       v-if="visit > 0"
       class="post-info-item"
-    >阅读: {{visit}} 次</div>
+    >阅读: {{ visit }} 次
+    </div>
     <div
       v-if="visit"
       class="post-info-item"
-    >|</div>
+    >
+      |
+    </div>
     <div
       v-if="pubTime"
       class="post-info-item"
-    >发布: {{pubTimeStr}}</div>
+    >发布: {{ pubTimeStr }}
+    </div>
   </div>
 </template>
 
 <script>
-import split from 'lodash/split'
-import isString from 'lodash/isString'
+import split from 'lodash.split'
+import isString from 'lodash.isstring'
 export default {
   props: {
     category: String,

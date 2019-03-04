@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import api from '~/api'
 export default {
   data() {
     return {
@@ -76,7 +75,7 @@ export default {
     },
     handleInfiniteOnLoad() {
       this.loading = true
-      api.getMyloveList(this.loadOffset).then(res => {
+      this.$api.getMyloveList(this.loadOffset).then(res => {
         if (res.data) {
           this.myloveList = this.myloveList.concat(res.data)
         }

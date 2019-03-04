@@ -13,6 +13,8 @@ module.exports = {
   loading: { color: '#fff' },
   css: ['ant-design-vue/dist/antd.css'],
   plugins: [
+    '@/plugins/api',
+    '@/plugins/axios',
     '@/plugins/antd-ui',
     '@/plugins/date-time-formatter',
     '@/plugins/vue-infinite-scroll',

@@ -2,29 +2,29 @@
   <a-layout>
     <a-affix>
       <a-layout-header class="layout-header">
-        <menubar/>
+        <menubar />
       </a-layout-header>
     </a-affix>
     <a-layout>
       <a-layout-content class="layout-content">
         <a-row>
-          <a-col :span="2"></a-col>
+          <a-col :span="2" />
           <a-col :span="15">
-            <nuxt/>
+            <nuxt />
           </a-col>
-          <a-col :span="1"></a-col>
+          <a-col :span="1" />
           <a-col :span="4">
-            <a-affix :offsetTop="66">
-              <gvf-project class="right-panel"></gvf-project>
-              <hot-post class="right-panel"></hot-post>
+            <a-affix :offset-top="66">
+              <gvf-project class="right-panel" />
+              <hot-post class="right-panel" />
             </a-affix>
           </a-col>
-          <a-col :span="2"></a-col>
+          <a-col :span="2" />
         </a-row>
       </a-layout-content>
     </a-layout>
     <a-layout-footer class="layout-footer">
-      <my-footer></my-footer>
+      <my-footer />
     </a-layout-footer>
   </a-layout>
 </template>
@@ -67,4 +67,3 @@ export default {
   margin-left: 8px;
 }
 </style>
-

@@ -7,16 +7,16 @@
         </a-col>
         <a-col :span="14">
           <a-select
-            showSearch
             id="search-select"
+            show-search
             style="width: 100%"
-            :defaultActiveFirstOption="false"
-            :showArrow="false"
-            :filterOption="false"
+            :default-active-first-option="false"
+            :show-arrow="false"
+            :filter-option="false"
+            placeholder="search post..."
+            :not-found-content="fetching ? undefined : null"
             @search="handleSearch"
             @select="handleSelect"
-            placeholder="search post..."
-            :notFoundContent="fetching ? undefined : null"
           >
             <a-spin
               v-if="fetching"
@@ -26,17 +26,19 @@
             <a-select-option
               v-for="d in data"
               :key="d.value"
-            >{{d.text}}</a-select-option>
+            >
+              {{ d.text }}
+            </a-select-option>
           </a-select>
         </a-col>
       </a-row>
     </a-col>
     <a-col :span="18">
       <a-menu
+        v-model="selectKeys"
         class="title"
         mode="horizontal"
-        v-model="selectKeys"
-        :style="{ lineHeight: '64px', width:'100%' }"
+        :style="{ lineHeight: '64px', width: '100%' }"
       >
         <a-menu-item key="post">
           <router-link to="/post/list">
@@ -67,19 +69,12 @@
 </template>
 
 <script>
-import api from '~/api'
-import debounce from 'lodash/debounce'
-import isArray from 'lodash/isArray'
-import isNil from 'lodash/isNil'
-import split from 'lodash/split'
+import debounce from 'lodash.debounce'
+import isArray from 'lodash.isarray'
+import isNil from 'lodash.isnil'
+import split from 'lodash.split'
 
 export default {
-  mounted() {
-    let names = split(this.$route.fullPath, '/')
-    if (names.length > 1) {
-      this.selectKeys = [names[1]]
-    }
-  },
   data() {
     this.handleSearch = debounce(this.handleSearch, 500)
     return {
@@ -88,11 +83,17 @@ export default {
       data: []
     }
   },
+  mounted() {
+    const names = split(this.$route.fullPath, '/')
+    if (names.length > 1) {
+      this.selectKeys = [names[1]]
+    }
+  },
   methods: {
     handleSearch(val) {
       if (!isNil(val)) {
         this.fetching = true
-        api
+        this.$api
           .searchPost(val)
           .then(res => {
             if (isArray(res.data)) {
@@ -140,4 +141,3 @@ export default {
   box-shadow: none;
 }
 </style>
-

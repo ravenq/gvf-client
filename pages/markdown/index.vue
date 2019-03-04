@@ -18,10 +18,10 @@
           />
         </div>
         <a-textarea
+          v-model="content"
           :autosize="{ minRows: 26 }"
           :rows="28"
           :resize="false"
-          v-model="content"
           class="m-input"
         />
       </div>
@@ -39,7 +39,7 @@
         width="110"
         height="20"
       />
-      <a-divider class="mk-divider"></a-divider>
+      <a-divider class="mk-divider" />
       <div class="full-container mk-container">
         <markdown-it-vue :content="content" />
       </div>
@@ -111,4 +111,3 @@ export default {
   margin-top: 10px;
 }
 </style>
-

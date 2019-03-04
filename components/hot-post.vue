@@ -1,8 +1,8 @@
 <template>
   <a-card
+    id="hot-post-container"
     title="热门文章"
     :bordered="false"
-    id="hot-post-container"
   >
     <a-list
       itemLayout="horizontal"
@@ -24,20 +24,19 @@
 </template>
 
 <script>
-import api from '~/api'
-import truncate from 'lodash/truncate'
+import truncate from 'lodash.truncate'
 export default {
-  mounted() {
-    api.getHotPostList().then(res => {
-      if (res.data) {
-        this.postList = res.data
-      }
-    })
-  },
   data() {
     return {
       postList: []
     }
+  },
+  mounted() {
+    this.$api.getHotPostList().then(res => {
+      if (res.data) {
+        this.postList = res.data
+      }
+    })
   },
   methods: {
     truncatTitle(val) {

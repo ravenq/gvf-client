@@ -1,46 +1,25 @@
 <template>
   <div class="post-content">
-    <h1>{{post.title}}</h1>
+    <h1>{{ post.title }}</h1>
     <a-divider />
     <post-info
       :category="post.category.name"
       :tags="post.tags"
       :visit="post.visit"
-      :pubTime="post.pubTime"
-    ></post-info>
+      :pub-time="post.pubTime"
+    />
     <div>
-      <markdown-it-vue :content="post.content"></markdown-it-vue>
+      <markdown-it-vue :content="post.content" />
     </div>
   </div>
 </template>
 <script>
-import isNil from 'lodash/isNil'
-import api from '~/api'
+import isNil from 'lodash.isnil'
 import PostInfo from '~/components/post-info'
 
 export default {
-  asyncData({ query }) {
-    let id = query.id
-    return api.getPost(id).then(res => {
-      if (!isNil(res.data)) {
-        return {
-          post: res.data
-        }
-      }
-    })
-  },
-  layout: 'post',
   components: {
     PostInfo
-  },
-  beforeRouteUpdate(to, from, next) {
-    let id = to.query.id
-    api.getPost(id).then(res => {
-      if (!isNil(res.data)) {
-        this.post = res.data
-      }
-    })
-    next()
   },
   data() {
     return {
@@ -64,6 +43,26 @@ export default {
         pubTime: new Date()
       }
     }
+  },
+  asyncData({ query }) {
+    const id = query.id
+    return this.$api.getPost(id).then(res => {
+      if (!isNil(res.data)) {
+        return {
+          post: res.data
+        }
+      }
+    })
+  },
+  layout: 'post',
+  beforeRouteUpdate(to, from, next) {
+    const id = to.query.id
+    this.$api.getPost(id).then(res => {
+      if (!isNil(res.data)) {
+        this.post = res.data
+      }
+    })
+    next()
   }
 }
 </script>

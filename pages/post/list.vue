@@ -3,12 +3,12 @@
     itemLayout="vertical"
     size="large"
   >
-    <virtual-scroller
+    <recycle-scroller
+      v-infinite-scroll="handleInfiniteOnLoad"
       style="height: 100%"
-      item-size="185.8"
+      :item-size="35"
       :items="postList"
       page-mode
-      v-infinite-scroll="handleInfiniteOnLoad"
       :infinite-scroll-disabled="busy"
       :infinite-scroll-distance="10"
     >
@@ -22,21 +22,21 @@
               type="star-o"
               style="margin-right: 8px"
             />
-            {{item.visit || 0}}
+            {{ item.visit || 0 }}
           </span>
           <span>
             <a-icon
               type="like-o"
               style="margin-right: 8px"
             />
-            {{item.visit || 0}}
+            {{ item.visit || 0 }}
           </span>
           <span>
             <a-icon
               type="message"
               style="margin-right: 8px"
             />
-            {{item.visit || 0}}
+            {{ item.visit || 0 }}
           </span>
         </template>
         <!-- <img slot="extra" width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" /> -->
@@ -46,8 +46,8 @@
               :category="item.category.name"
               :tags="item.tags"
               :visit="item.visit"
-              :pubTime="item.pubTime"
-            ></post-info>
+              :pub-time="item.pubTime"
+            />
           </div>
           <router-link
             slot="title"
@@ -57,7 +57,7 @@
               class="post-type-img"
               :src="postTypeUrl(item.postType)"
             >
-            {{item.title}}
+            {{ item.title }}
           </router-link>
           <a-avatar
             slot="avatar"
@@ -66,7 +66,7 @@
         </a-list-item-meta>
         <div>{{truncateSummary(item.summary)}}</div>
       </a-list-item>
-    </virtual-scroller>
+    </recycle-scroller>
     <a-spin
       v-if="loading && !busy"
       class="post-list-loading"
@@ -74,8 +74,7 @@
   </a-list>
 </template>
 <script>
-import api from '~/api'
-import truncate from 'lodash/truncate'
+import truncate from 'lodash.truncate'
 import PostInfo from '~/components/post-info'
 
 export default {
@@ -108,13 +107,14 @@ export default {
       return truncate(val, { length: 300 })
     },
     handleInfiniteOnLoad() {
+      debugger
       this.loading = true
-      api.getPostList(this.loadOffset).then(res => {
+      this.$api.getPostList(0, 100).then(res => {
         if (res.data) {
           this.postList = this.postList.concat(res.data)
         }
         this.loading = false
-        this.loadOffset += 10
+        // this.loadOffset += 10
       })
     }
   }
