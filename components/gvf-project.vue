@@ -8,7 +8,7 @@
       <img
         class="avatar"
         src="/gvf-project.png"
-      />
+      >
       <a-card-meta title="The GVF Project">
         <template slot="description">
           <p>

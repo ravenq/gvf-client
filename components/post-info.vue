@@ -17,7 +17,6 @@
       v-if="tags"
       class="post-info-item"
     >
-
       标签:
       <a
         v-for="(tag, index) in tagArr"
@@ -33,7 +32,8 @@
     <div
       v-if="visit > 0"
       class="post-info-item"
-    >阅读: {{ visit }} 次
+    >
+      阅读: {{ visit }} 次
     </div>
     <div
       v-if="visit"
@@ -44,7 +44,8 @@
     <div
       v-if="pubTime"
       class="post-info-item"
-    >发布: {{ pubTimeStr }}
+    >
+      发布: {{ pubTimeStr }}
     </div>
   </div>
 </template>
@@ -54,10 +55,22 @@ import split from 'lodash.split'
 import isString from 'lodash.isstring'
 export default {
   props: {
-    category: String,
-    tags: String,
-    visit: Number,
-    pubTime: [Date, String]
+    category: {
+      type: String,
+      default: ''
+    },
+    tags: {
+      type: String,
+      default: ''
+    },
+    visit: {
+      type: Number,
+      default: 0
+    },
+    pubTime: {
+      type: [Date, String],
+      default: ''
+    }
   },
   computed: {
     tagArr() {

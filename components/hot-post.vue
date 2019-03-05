@@ -5,8 +5,8 @@
     :bordered="false"
   >
     <a-list
-      itemLayout="horizontal"
-      :dataSource="postList"
+      item-layout="horizontal"
+      :data-source="postList"
     >
       <a-list-item
         slot="renderItem"
@@ -16,7 +16,9 @@
           <nuxt-link
             slot="title"
             :to="{path:'/post/content', query:{id: item.id}}"
-          >{{truncatTitle(item.title)}}</nuxt-link>
+          >
+            {{ truncatTitle(item.title) }}
+          </nuxt-link>
         </a-list-item-meta>
       </a-list-item>
     </a-list>

@@ -1,72 +1,64 @@
 <template>
   <a-list
-    itemLayout="vertical"
+    v-infinite-scroll="handleInfiniteOnLoad"
+    item-layout="vertical"
     size="large"
+    style="height: 100%"
+    :data-source="postList"
+    :infinite-scroll-disabled="busy"
+    :infinite-scroll-distance="10"
   >
-    <recycle-scroller
-      v-infinite-scroll="handleInfiniteOnLoad"
-      style="height: 100%"
-      :item-size="35"
-      :items="postList"
-      page-mode
-      :infinite-scroll-disabled="busy"
-      :infinite-scroll-distance="10"
+    <a-list-item
+      :key="item.index"
+      slot="renderItem"
+      slot-scope="item"
     >
-      <a-list-item
-        slot-scope="{item}"
-        :key="item.index"
-      >
-        <template slot="actions">
-          <span>
-            <a-icon
-              type="star-o"
-              style="margin-right: 8px"
-            />
-            {{ item.visit || 0 }}
-          </span>
-          <span>
-            <a-icon
-              type="like-o"
-              style="margin-right: 8px"
-            />
-            {{ item.visit || 0 }}
-          </span>
-          <span>
-            <a-icon
-              type="message"
-              style="margin-right: 8px"
-            />
-            {{ item.visit || 0 }}
-          </span>
-        </template>
-        <!-- <img slot="extra" width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" /> -->
-        <a-list-item-meta>
-          <div slot="description">
-            <post-info
-              :category="item.category.name"
-              :tags="item.tags"
-              :visit="item.visit"
-              :pub-time="item.pubTime"
-            />
-          </div>
-          <router-link
-            slot="title"
-            :to="{path:'/post/content', query:{id: item.id}}"
-          >
-            <img
-              class="post-type-img"
-              :src="postTypeUrl(item.postType)"
-            >
-            {{ item.title }}
-          </router-link>
-          <a-avatar
-            slot="avatar"
-            src="/logo.png"
+      <template slot="actions">
+        <span>
+          <a-icon
+            type="star-o"
+            style="margin-right: 8px"
           />
-        </a-list-item-meta>
-        <div>{{truncateSummary(item.summary)}}</div>
-      </a-list-item>
-    </recycle-scroller>
+          {{ item.visit || 0 }}
+        </span>
+        <span>
+          <a-icon
+            type="like-o"
+            style="margin-right: 8px"
+          />
+          {{ item.visit || 0 }}
+        </span>
+        <span>
+          <a-icon
+            type="message"
+            style="margin-right: 8px"
+          />
+          {{ item.visit || 0 }}
+        </span>
+      </template>
+      <!-- <img slot="extra" width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" /> -->
+      <a-list-item-meta>
+        <div slot="description">
+          <post-info
+            :category="item.category.name"
+            :tags="item.tags"
+            :visit="item.visit"
+            :pub-time="item.pubTime"
+          />
+        </div>
+        <router-link
+          slot="title"
+          :to="{path:'/post/content', query:{id: item.id}}"
+        >
+          <img
+            class="post-type-img"
+            :src="postTypeUrl(item.postType)"
+          >
+          {{ item.title }}
+        </router-link>
+      </a-list-item-meta>
+      <div>{{ truncateSummary(item.summary) }}</div>
+    </a-list-item>
     <a-spin
       v-if="loading && !busy"
       class="post-list-loading"
@@ -107,14 +99,13 @@ export default {
       return truncate(val, { length: 300 })
     },
     handleInfiniteOnLoad() {
-      debugger
       this.loading = true
-      this.$api.getPostList(0, 100).then(res => {
+      this.$api.getPostList(this.loadOffset).then(res => {
         if (res.data) {
           this.postList = this.postList.concat(res.data)
         }
         this.loading = false
-        // this.loadOffset += 10
+        this.loadOffset += 10
       })
     }
   }

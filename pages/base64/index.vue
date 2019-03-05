@@ -46,12 +46,11 @@
               :show-upload-list="false"
               :before-upload="handleSelectImg"
             >
-              // eslint-disable-next-line vue/html-self-closing
               <img
                 v-if="base64Toimg.imageUrl"
                 class="to-base64-img"
                 :src="base64Toimg.imageUrl"
-                />
+              >
               <div v-else>
                 <div>暂无图片</div>
               </div>

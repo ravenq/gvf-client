@@ -1,43 +1,42 @@
 <template>
   <section>
     <a-row>
-      <a-col :span="7"></a-col>
+      <a-col :span="7" />
       <a-col :span="12">
-        <a-timeline class="mylove-container">
-          <virtual-scroller
-            style="height: 100%"
-            item-height="450"
-            :items="myloveList"
-            page-mode
-            v-infinite-scroll="handleInfiniteOnLoad"
-            :infinite-scroll-disabled="busy"
-            :infinite-scroll-distance="10"
+        <a-timeline
+          v-infinite-scroll="handleInfiniteOnLoad"
+          class="mylove-container"
+          style="height: 100%"
+          :data-source="myloveList"
+          :infinite-scroll-disabled="busy"
+          :infinite-scroll-distance="10"
+        >
+          <a-timeline-item
+            v-for="item in myloveList"
+            :key="item.id"
+            class="mylove-item"
+            @mouseenter="mouseenter(item)"
+            @mouseleave="mouseleave(item)"
           >
-            <a-timeline-item
-              class="mylove-item"
-              slot-scope="{item}"
-              :key="item.id"
-              @mouseenter="mouseenter(item)"
-              @mouseleave="mouseleave(item)"
+            {{ formatDateTime(item.createTime) }}
+            <a-card
+              hoverable
+              :style="{width: itemWidth(item)}"
             >
-              {{formatDateTime(item.createTime)}}
-              <a-card
-                hoverable
-                :style="{width: itemWidth(item)}"
+              <img
+                slot="cover"
+                :src="item.photo"
               >
-                <img
-                  :src="item.photo"
-                  slot="cover"
-                >
-                <a-card-meta>
-                  <template slot="description">{{item.content}}</template>
-                </a-card-meta>
-              </a-card>
-            </a-timeline-item>
-          </virtual-scroller>
+              <a-card-meta>
+                <template slot="description">
+                  {{ item.content }}
+                </template>
+              </a-card-meta>
+            </a-card>
+          </a-timeline-item>
         </a-timeline>
       </a-col>
-      <a-col :span="5"></a-col>
+      <a-col :span="5" />
     </a-row>
   </section>
 </template>
