@@ -10,12 +10,14 @@ install dependences.
 yarn
 ```
 
-config server url in ./config/index.js
+config server url in ./nuxt.config.js
 
 ```js
-export default {
-  BASE_API: 'http://localhost:8080/v1'
+// ...
+axios: {
+  baseURL: 'http://www.aqcoder.com:8080/v1'
 }
+// ...
 ```
 
 run.
