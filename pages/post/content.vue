@@ -18,6 +18,7 @@ import isNil from 'lodash.isnil'
 import PostInfo from '~/components/post-info'
 
 export default {
+  layout: 'post',
   components: {
     PostInfo
   },
@@ -44,25 +45,15 @@ export default {
       }
     }
   },
-  asyncData({ query }) {
-    const id = query.id
-    return this.$api.getPost(id).then(res => {
-      if (!isNil(res.data)) {
-        return {
-          post: res.data
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      const id = to.query.id
+      vm.$api.getPost(id).then(res => {
+        if (!isNil(res.data)) {
+          vm.post = res.data
         }
-      }
+      })
     })
-  },
-  layout: 'post',
-  beforeRouteUpdate(to, from, next) {
-    const id = to.query.id
-    this.$api.getPost(id).then(res => {
-      if (!isNil(res.data)) {
-        this.post = res.data
-      }
-    })
-    next()
   }
 }
 </script>
