@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - '10'
 
+branchs:
+  only:
+    - master
+
 script:
   - yarn build
 
@@ -12,11 +16,7 @@ before_install:
 
 addons:
   ssh_known_hosts:
-    - www.aqcoder.com
+    - www.aqcoder.com:29371
 
-deploy:
-  provider: script
-  script: scp -P$sshport -r dist/* www.aqcoder.com:/var/www/gvf-client/
-  skip_cleanup: true
-  on:
-    tags: true
+after_success:
+  - scp -P29371 -r dist/* root@www.aqcoder.com:/var/www/gvf-client/
