@@ -9,7 +9,14 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    script: [{ src: '/baidu-tongji.js' }]
+    script: [
+      { src: '/baidu-tongji.js' },
+      {
+        src: 'https://www.googletagmanager.com/gtag/js?id=UA-138051083-1',
+        async: true
+      },
+      { src: '/google-analytics.js' }
+    ]
   },
   loading: { color: '#fff' },
   css: ['ant-design-vue/dist/antd.css'],
