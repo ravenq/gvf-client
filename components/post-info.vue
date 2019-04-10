@@ -21,7 +21,7 @@
       <a
         v-for="(tag, index) in tagArr"
         :key="index"
-      >{{ tag }}</a>
+      >{{ tag }} </a>
     </div>
     <div
       v-if="tags"

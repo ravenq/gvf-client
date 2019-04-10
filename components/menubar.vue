@@ -42,22 +42,22 @@
       >
         <a-menu-item key="post">
           <router-link to="/post/list">
-            <a-icon type="book" />Blog
+            <a-icon id="menu-icon" type="book" />Blog
           </router-link>
         </a-menu-item>
         <a-menu-item key="markdown">
           <router-link to="/markdown">
-            <a-icon type="file-markdown" />Markdown
+            <a-icon id="menu-icon" type="file-markdown" />Markdown
           </router-link>
         </a-menu-item>
         <a-menu-item key="base64">
           <router-link to="/base64">
-            <a-icon type="inbox" />Base64
+            <a-icon id="menu-icon" type="inbox" />Base64
           </router-link>
         </a-menu-item>
         <a-menu-item key="mylove">
           <router-link to="/mylove">
-            <a-icon type="heart-o" />Mylive
+            <a-icon id="menu-icon" type="heart-o" />Mylive
           </router-link>
         </a-menu-item>
         <!-- <a-menu-item key="aboutme">
@@ -133,6 +133,10 @@ export default {
 }
 
 .title {
+  font-size: 24px;
+}
+
+#menu-icon {
   font-size: 24px;
 }
 

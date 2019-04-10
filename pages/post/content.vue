@@ -1,14 +1,12 @@
 <template>
   <div class="post-content">
-    <h1>{{ post.title }}</h1>
-    <a-divider />
     <post-info
       :category="post.category.name"
       :tags="post.tags"
       :visit="post.visit"
       :pub-time="post.pubTime"
     />
-    <div>
+    <div class="mk-content">
       <markdown-it-vue :content="post.content" />
     </div>
   </div>
@@ -60,6 +58,9 @@ export default {
 <style lang="scss" scoped>
 .post-content {
   height: 100%;
-  margin-top: 64px;
+  margin-top: 45px;
+}
+.mk-content {
+  margin-top: 12px;
 }
 </style>
