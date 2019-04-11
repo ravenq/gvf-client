@@ -60,7 +60,7 @@
       <div>{{ truncateSummary(item.summary) }}</div>
     </a-list-item>
     <a-spin
-      :spinning="loading && !busy"
+      v-if="loading && !busy"
       class="post-list-loading"
     />
   </a-list>
