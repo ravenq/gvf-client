@@ -60,7 +60,7 @@
       <div>{{ truncateSummary(item.summary) }}</div>
     </a-list-item>
     <a-spin
-      v-if="loading && !busy"
+      :spinning="loading && !busy"
       class="post-list-loading"
     />
   </a-list>
@@ -121,6 +121,7 @@ export default {
 }
 .post-list-loading {
   position: absolute;
+  top: 30px;
   bottom: 40px;
   width: 100%;
   text-align: center;

@@ -23,6 +23,7 @@
         </a-row>
       </a-layout-content>
     </a-layout>
+    <a-back-top />
     <a-layout-footer class="layout-footer">
       <my-footer />
     </a-layout-footer>
