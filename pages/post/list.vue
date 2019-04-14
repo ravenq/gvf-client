@@ -16,27 +16,30 @@
       <template slot="actions">
         <span>
           <a-icon
-            type="star-o"
-            style="margin-right: 8px"
-          />
-          {{ item.visit || 0 }}
-        </span>
-        <span>
-          <a-icon
-            type="like-o"
-            style="margin-right: 8px"
-          />
-          {{ item.visit || 0 }}
-        </span>
-        <span>
-          <a-icon
-            type="message"
+            type="eye-o"
             style="margin-right: 8px"
           />
           {{ item.visit || 0 }}
         </span>
       </template>
-      <!-- <img slot="extra" width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" /> -->
+      <template slot="actions">
+        <span>
+          <a-icon
+            type="like-o"
+            style="margin-right: 8px"
+          />
+          {{ item.likes || 0 }}
+        </span>
+      </template>
+      <template slot="actions">
+        <span>
+          <a-icon
+            type="message"
+            style="margin-right: 8px"
+          />
+          {{ item.message || 0 }}
+        </span>
+      </template>
       <a-list-item-meta>
         <div slot="description">
           <post-info

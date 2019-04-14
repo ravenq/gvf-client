@@ -13,6 +13,12 @@ export default class Api {
   getPost(id) {
     return this.axios.get(`/post/${id}`)
   }
+  likePost(id) {
+    return this.axios.get(`/post/like/${id}`)
+  }
+  dislikePost(id) {
+    return this.axios.get(`/post/dislike/${id}`)
+  }
   searchPost(query) {
     return this.axios.get(`/post?query=title.contains:${query}`)
   }

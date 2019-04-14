@@ -9,10 +9,10 @@
         class="avatar"
         src="/gvf-project.png"
       >
-      <a-card-meta title="The GVF Project">
+      <a-card-meta title="The GVF Project" style="text-align: center">
         <template slot="description">
-          <p>
-            GVF 项目是由 GO 作为后端、Vue 作为 PC 前端、Flutter
+          <p style="text-align: justify">
+            GVF 项目是由 Golang 作为后端、Vue 作为 PC 前端、Flutter
             作为移动端构建的现代互联网应用框架示例。本博客使用 GVF 项目构建。
           </p>
           <a-row

@@ -9,10 +9,20 @@
     <div class="mk-content">
       <markdown-it-vue :content="post.content" />
     </div>
+    <a-divider />
+    <div class="like-container">
+      <a-icon type="like" class="like-icon" @click="handleLike" />
+      <span class="like-span-left">{{ post.likes }}</span>
+      <a-icon type="dislike" class="like-icon like-span-right" @click="handleDislike" />
+      <span>{{ post.dislikes }}</span>
+    </div>
+    <a-divider />
+    <span>The comments will be comming soon...</span>
   </div>
 </template>
 <script>
 import isNil from 'lodash.isnil'
+import isEqual from 'lodash.isequal'
 import PostInfo from '~/components/post-info'
 
 export default {
@@ -39,6 +49,8 @@ export default {
         refAuthor: '',
         translator: '',
         visit: 0,
+        likes: 0,
+        dislikes: 0,
         pubTime: new Date()
       }
     }
@@ -52,6 +64,32 @@ export default {
         }
       })
     })
+  },
+  methods: {
+    handleLike() {
+      this.$api
+        .likePost(this.post.id)
+        .then(res => {
+          this.post.likes = res.data.likes
+        })
+        .catch(e => {
+          if (isEqual(e.status, 6)) {
+            this.$message.info('一天只能赞一次哦~')
+          }
+        })
+    },
+    handleDislike() {
+      this.$api
+        .dislikePost(this.post.id)
+        .then(res => {
+          this.post.dislikes = res.data.dislikes
+        })
+        .catch(e => {
+          if (isEqual(e.status, 6)) {
+            this.$message.info('一天只能吐槽一次哦~')
+          }
+        })
+    }
   }
 }
 </script>
@@ -62,5 +100,18 @@ export default {
 }
 .mk-content {
   margin-top: 12px;
+}
+.like-container {
+  text-align: center;
+  font-size: 48px;
+}
+.like-span-left {
+  margin-right: 32px;
+}
+.like-span-right {
+  margin-left: 32px;
+}
+.like-icon {
+  cursor: pointer;
 }
 </style>

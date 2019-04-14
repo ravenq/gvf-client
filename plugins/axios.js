@@ -1,4 +1,4 @@
-import { message } from 'ant-design-vue'
+// import { message } from 'ant-design-vue'
 import isEqual from 'lodash.isequal'
 
 export default function({ $axios, redirect }) {
@@ -13,7 +13,7 @@ export default function({ $axios, redirect }) {
     if (isEqual(response.data.status, 0)) {
       return response.data
     } else {
-      message.error(JSON.stringify(response.data))
+      // message.error(JSON.stringify(response.data))
       return Promise.reject(response.data)
     }
   })
@@ -23,7 +23,7 @@ export default function({ $axios, redirect }) {
     if (code === 400) {
       redirect('/400')
     } else {
-      message.error(JSON.stringify(error.message))
+      // message.error(JSON.stringify(error.message))
     }
   })
 }
