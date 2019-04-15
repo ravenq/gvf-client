@@ -1,7 +1,7 @@
 {
   "name": "gvf-client",
   "version": "1.0.0",
-  "description": "The client of gvf project.",
+  "description": "Ravenq 的技术博客(http://www.aqcoder.com),这是一个码农的技术博客，记录一些技术问题和感想。同时开源本博源码(http://www.github.com/ravenq)，和天下的码农们共同学习，共同进步ヾ(◍°∇°◍)ﾉﾞ",
   "author": "flw_dream@126.com <ravenq>",
   "private": true,
   "scripts": {
