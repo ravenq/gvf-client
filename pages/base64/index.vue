@@ -66,7 +66,7 @@
 <script>
 import some from 'lodash/some'
 export default {
-  layout: 'screen',
+  layout: 'full-page',
   data() {
     return {
       imgToBase64: {

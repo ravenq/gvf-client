@@ -55,14 +55,16 @@
             <a-icon id="menu-icon" type="inbox" />Base64
           </router-link>
         </a-menu-item>
-        <a-menu-item key="mylove">
+        <!-- <a-menu-item key="mylove">
           <router-link to="/mylove">
             <a-icon id="menu-icon" type="heart-o" />Mylive
           </router-link>
+        </a-menu-item> -->
+        <a-menu-item key="aboutme">
+          <router-link to="/aboutme">
+            <a-icon id="menu-icon" type="heart-o" />About Me
+          </router-link>
         </a-menu-item>
-        <!-- <a-menu-item key="aboutme">
-          <router-link to="/aboutme"><a-icon type="user" />Aboutme</router-link>
-        </a-menu-item>-->
       </a-menu>
     </a-col>
   </a-row>

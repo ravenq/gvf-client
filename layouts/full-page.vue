@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .ant-layout-header {
   background: #ffffff;
 }
@@ -45,13 +45,11 @@ export default {
 .layout-footer {
   text-align: center;
   background-color: #ffffff;
+  position: fixed;
+  bottom: 0px;
+  left: 40%;
 }
-#__nuxt {
-  height: 100%;
-}
-#__layout {
-  height: 100%;
-}
+
 .default-layout-container {
   height: 100%;
 }

@@ -17,18 +17,20 @@
       <span>{{ post.dislikes }}</span>
     </div>
     <a-divider />
-    <span>The comments will be comming soon...</span>
+    <comments :comment-id="commentId" />
   </div>
 </template>
 <script>
 import isNil from 'lodash.isnil'
 import isEqual from 'lodash.isequal'
 import PostInfo from '~/components/post-info'
+import Comments from '~/components/comments'
 
 export default {
   layout: 'post',
   components: {
-    PostInfo
+    PostInfo,
+    Comments
   },
   data() {
     return {
@@ -53,6 +55,12 @@ export default {
         dislikes: 0,
         pubTime: new Date()
       }
+    }
+  },
+  computed: {
+    commentId() {
+      debugger
+      return `post-${this.post.id}`
     }
   },
   beforeRouteEnter(to, from, next) {

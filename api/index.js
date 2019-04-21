@@ -2,6 +2,12 @@ export default class Api {
   constructor(axios) {
     this.axios = axios
   }
+  LoginWithGithub(code, state) {
+    return this.axios.post('/user/loginWithGithub', {
+      code: code,
+      state: state
+    })
+  }
   getPostList(offset, limit = 10) {
     return this.axios.get(
       `/post?sortby=pubTime&order=desc&limit=${limit}&offset=${offset}`
@@ -26,5 +32,11 @@ export default class Api {
     return this.axios.get(
       `/mylove?sortby=createTime&order=desc&limit=${limit}&offset=${offset}`
     )
+  }
+  addComment(data) {
+    return this.axios.post('/comments', data)
+  }
+  getCommentList(id) {
+    return this.axios.get(`/comments/fetch/${id}`)
   }
 }
