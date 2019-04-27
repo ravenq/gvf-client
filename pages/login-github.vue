@@ -10,8 +10,10 @@ export default {
       const code = to.query.code
       const state = to.query.state
       if (!isNil(code)) {
-        window.code = code
-        window.state = state
+        window.postMessage(
+          JSON.stringify({ code, state }),
+          window.location.origin
+        )
         window.close()
       }
     })

@@ -122,15 +122,22 @@ export default {
         'modal=yes,toolbar=no,titlebar=no,menuba=no,location=no,top=200,left=500,width=600,height=400'
       )
       myWindow.focus()
-      myWindow.onclose = () => {
-        const code = myWindow.code
-        const verifyState = myWindow.state
-        this.$api.LoginWithGithub(code, verifyState).then(res => {
-          const user = res.data
-          this.setUser(user)
-          this.spinning = false
-        })
-      }
+      window.addEventListener(
+        'message',
+        event => {
+          if (event.origin !== window.location.origin) {
+            return
+          }
+          const data = JSON.parse(event.data)
+          this.$api.LoginWithGithub(data.code, data.state).then(res => {
+            const user = res.data
+            this.setUser(user)
+            this.spinning = false
+          })
+        },
+        false
+      )
+      myWindow.onclose = () => {}
 
       setTimeout(() => {
         if (!this.isAuthenticated) {
