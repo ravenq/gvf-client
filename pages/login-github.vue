@@ -10,7 +10,8 @@ export default {
       const code = to.query.code
       const state = to.query.state
       if (!isNil(code)) {
-        window.loginGithub(code, state)
+        window.code = code
+        window.state = state
         window.close()
       }
     })
