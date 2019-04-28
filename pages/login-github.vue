@@ -10,10 +10,7 @@ export default {
       const code = to.query.code
       const state = to.query.state
       if (!isNil(code)) {
-        window.postMessage(
-          JSON.stringify({ code, state }),
-          window.location.origin
-        )
+        window.opener.loginWithGithub(code, state)
         window.close()
       }
     })

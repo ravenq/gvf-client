@@ -37,7 +37,7 @@
             type="message"
             style="margin-right: 8px"
           />
-          {{ item.message || 0 }}
+          {{ item.commentsCount || 0 }}
         </span>
       </template>
       <a-list-item-meta>

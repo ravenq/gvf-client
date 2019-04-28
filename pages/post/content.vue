@@ -59,7 +59,6 @@ export default {
   },
   computed: {
     commentId() {
-      debugger
       return `post-${this.post.id}`
     }
   },

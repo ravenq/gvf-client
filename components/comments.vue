@@ -1,23 +1,8 @@
 <template>
   <a-spin :spinning="spinning">
-    <div>
-      <a-alert v-if="!isAuthenticated" class="alter-login" message="登录后可评论" banner />
-      <a-row type="flex" justify="space-between">
-        <a-col :span="4">
-          <div class="comments-header-title">
-            {{ comments.length }} 个评论
-          </div>
-        </a-col>
-        <a-col :span="8" />
-        <a-col :span="4">
-          <div v-if="!isAuthenticated">
-            <a-icon class="login-github" type="github" @click="loginWithGithub" />
-            <strong class="login-title">登录：</strong>
-          </div>
-        </a-col>
-      </a-row>
+    <div class="comments-header-title">
+      {{ comments.length }} 个评论
     </div>
-    <a-divider />
     <div>
       <a-list
         v-if="comments.length"
@@ -31,7 +16,11 @@
             :content="item.content"
             :datetime="item.createTime"
           >
-            <span slot="actions">回复</span>
+            <div class="reply-container">
+              <span class="reply-item"><a-icon type="like" /> 0</span>
+              <span class="reply-item"><a-icon type="dislike" /> 0</span>
+              <span slot="actions" class="reply-item">回复</span>
+            </div>
           </a-comment>
         </a-list-item>
       </a-list>
@@ -43,7 +32,19 @@
         />
         <div slot="content">
           <a-form-item>
-            <a-textarea v-model="comment.content" :rows="4" />
+            <div v-if="!isAuthenticated" class="login-container">
+              <a-row>
+                <a-col :span="12">
+                  <div class="login-title">
+                    登录后可评论
+                  </div>
+                </a-col>
+                <a-col :span="12" style="text-align: left">
+                  <a-icon class="login-github" type="github" @click="loginWithGithub" />
+                </a-col>
+              </a-row>
+            </div>
+            <a-textarea v-model="comment.content" :rows="4" :disabled="!isAuthenticated" />
           </a-form-item>
           <a-form-item>
             <a-button
@@ -116,28 +117,19 @@ export default {
       const clientId = GITHUB.CLIENT_ID
       const state = new Date().getTime()
       const url = `${oauthUri}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=user&state=${state}`
+      window.loginWithGithub = (code, vertifyState) => {
+        this.$api.LoginWithGithub(code, vertifyState).then(res => {
+          const user = res.data
+          this.setUser(user)
+          this.spinning = false
+        })
+      }
       const myWindow = window.open(
         url,
         'aqcoder.com-login-github',
         'modal=yes,toolbar=no,titlebar=no,menuba=no,location=no,top=200,left=500,width=600,height=400'
       )
       myWindow.focus()
-      window.addEventListener(
-        'message',
-        event => {
-          if (event.origin !== window.location.origin) {
-            return
-          }
-          const data = JSON.parse(event.data)
-          this.$api.LoginWithGithub(data.code, data.state).then(res => {
-            const user = res.data
-            this.setUser(user)
-            this.spinning = false
-          })
-        },
-        false
-      )
-      myWindow.onclose = () => {}
 
       setTimeout(() => {
         if (!this.isAuthenticated) {
@@ -170,7 +162,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lange="scss" scoped>
 .comments-header-title {
   margin-top: 10px;
 }
@@ -180,13 +172,23 @@ export default {
 }
 .login-title {
   text-align: right;
-  float: right;
-  font-size: 16px;
-  margin-top: 5px;
+  margin-right: 8px;
+  font-size: 20px;
+  margin-top: -4px;
 }
 .login-github {
   font-size: 32px;
-  float: right;
   margin-right: 4px;
+}
+.login-container {
+  position: absolute;
+  z-index: 100;
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
+}
+.reply-item {
+  margin-right: 8px;
+  cursor: pointer;
 }
 </style>
