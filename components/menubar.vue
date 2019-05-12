@@ -1,11 +1,11 @@
 <template>
-  <a-row class="menubar-container">
-    <a-col :md="6" :xs="24">
+  <a-row id="menubar-container" class="menubar-container">
+    <a-col :md="6" :xs="0">
       <a-row justify="start">
-        <a-col :md="6" :xs="2">
+        <a-col :span="6">
           <!-- <img class="logo" alt="logo" height="32" src="/logo.png"> -->
         </a-col>
-        <a-col :md="14" :xs="20">
+        <a-col :span="14">
           <a-select
             id="search-select"
             show-search
@@ -33,7 +33,7 @@
         </a-col>
       </a-row>
     </a-col>
-    <a-col :md="18" :xs="0">
+    <a-col :md="18" :xs="24">
       <a-menu
         v-model="selectKeys"
         class="title"
@@ -50,7 +50,7 @@
             <a-icon id="menu-icon" type="file-markdown" />Markdown
           </router-link>
         </a-menu-item>
-        <a-menu-item key="base64">
+        <a-menu-item key="base64" class="base64">
           <router-link to="/base64">
             <a-icon id="menu-icon" type="inbox" />Base64
           </router-link>
@@ -126,24 +126,40 @@ export default {
 </script>
 
 <style>
-.menubar-container {
+#menubar-container .menubar-container {
   box-shadow: 0 2px 8px #f0f1f2;
 }
 
-.logo {
+#menubar-container .logo {
   margin-left: 50px;
 }
 
-.title {
-  font-size: 24px;
-}
-
-#menu-icon {
-  font-size: 24px;
-}
-
-#search-select .ant-select-selection {
+#menubar-container #search-select .ant-select-selection {
   border: none;
   box-shadow: none;
+}
+
+@media only screen and (min-width: 320px) {
+  #menubar-container .title {
+    font-size: 14px;
+  }
+  #menubar-container #menu-icon {
+    font-size: 14px;
+  }
+  #menubar-container .base64 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #menubar-container .title {
+    font-size: 24px;
+  }
+  #menubar-container #menu-icon {
+    font-size: 24px;
+  }
+  #menubar-container .base64 {
+    display: inline-block;
+  }
 }
 </style>

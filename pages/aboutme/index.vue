@@ -1,9 +1,10 @@
 <template>
   <a-row>
-    <a-col :span="4" />
-    <a-col :span="16">
+    <a-col :md="4" :xs="1" />
+    <a-col :md="16" :xs="22">
       <comments comment-id="about-me" />
     </a-col>
+    <a-col :md="4" :xs="1" />
   </a-row>
 </template>
 

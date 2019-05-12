@@ -2,20 +2,20 @@
   <div class="post-info">
     <div
       v-if="category"
-      class="post-info-item"
+      class="post-info-item hide-in-mobile"
     >
       分类:
       <a>{{ category }}</a>
     </div>
     <div
       v-if="category"
-      class="post-info-item"
+      class="post-info-item hide-in-mobile"
     >
       |
     </div>
     <div
       v-if="tags"
-      class="post-info-item"
+      class="post-info-item hide-in-mobile"
     >
       标签:
       <a
@@ -25,7 +25,7 @@
     </div>
     <div
       v-if="tags"
-      class="post-info-item"
+      class="post-info-item hide-in-mobile"
     >
       |
     </div>
@@ -95,5 +95,17 @@ export default {
 
 .post-info-item {
   margin-right: 8px;
+}
+
+@media only screen and (min-width: 320px) {
+  .hide-in-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .hide-in-mobile {
+    display: inline-block;
+  }
 }
 </style>

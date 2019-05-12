@@ -66,6 +66,7 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import clone from 'lodash.clone'
+import MobileDetect from 'mobile-detect'
 import { GITHUB } from '~/config'
 export default {
   props: {
@@ -117,26 +118,38 @@ export default {
       const clientId = GITHUB.CLIENT_ID
       const state = new Date().getTime()
       const url = `${oauthUri}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=user&state=${state}`
-      window.loginWithGithub = (code, vertifyState) => {
-        this.$api.LoginWithGithub(code, vertifyState).then(res => {
-          const user = res.data
-          this.setUser(user)
-          this.spinning = false
-        })
-      }
-      const myWindow = window.open(
-        url,
-        'aqcoder.com-login-github',
-        'modal=yes,toolbar=no,titlebar=no,menuba=no,location=no,top=200,left=500,width=600,height=400'
-      )
-      myWindow.focus()
-
-      setTimeout(() => {
-        if (!this.isAuthenticated) {
-          this.$message.error('登录超时')
-          this.spinning = false
+      const md = new MobileDetect(window.navigator.userAgent)
+      if (md.mobile()) {
+        sessionStorage.setItem(
+          'cur-route',
+          JSON.stringify({
+            path: this.$route.path,
+            query: this.$route.query
+          })
+        )
+        window.location.href = url
+      } else {
+        window.loginWithGithub = (code, vertifyState) => {
+          this.$api.LoginWithGithub(code, vertifyState).then(res => {
+            const user = res.data
+            this.setUser(user)
+            this.spinning = false
+          })
         }
-      }, 60000)
+        const myWindow = window.open(
+          url,
+          'aqcoder.com-login-github',
+          'modal=yes,toolbar=no,titlebar=no,menuba=no,location=no,top=200,left=500,width=600,height=400'
+        )
+        myWindow.focus()
+
+        setTimeout(() => {
+          if (!this.isAuthenticated) {
+            this.$message.error('登录超时')
+            this.spinning = false
+          }
+        }, 60000)
+      }
     },
     handleSubmit() {
       if (!this.comment.content) {
