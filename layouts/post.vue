@@ -8,18 +8,18 @@
     <a-layout>
       <a-layout-content class="layout-content">
         <a-row>
-          <a-col :span="2" />
-          <a-col :span="15">
+          <a-col :md="2" :xs="1" />
+          <a-col :md="15" :xs="22">
             <nuxt />
           </a-col>
-          <a-col :span="1" />
-          <a-col :span="4">
+          <a-col :md="1" :xs="1" />
+          <a-col :md="4" :xs="0">
             <a-affix :offset-top="66">
               <gvf-project class="right-panel" />
               <hot-post class="right-panel" />
             </a-affix>
           </a-col>
-          <a-col :span="2" />
+          <a-col :md="2" :xs="0" />
         </a-row>
       </a-layout-content>
     </a-layout>

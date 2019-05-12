@@ -1,11 +1,11 @@
 <template>
   <a-row class="menubar-container">
-    <a-col :span="6">
+    <a-col :md="6" :xs="24">
       <a-row justify="start">
-        <a-col :span="6">
+        <a-col :md="6" :xs="2">
           <!-- <img class="logo" alt="logo" height="32" src="/logo.png"> -->
         </a-col>
-        <a-col :span="14">
+        <a-col :md="14" :xs="20">
           <a-select
             id="search-select"
             show-search
@@ -33,7 +33,7 @@
         </a-col>
       </a-row>
     </a-col>
-    <a-col :span="18">
+    <a-col :md="18" :xs="0">
       <a-menu
         v-model="selectKeys"
         class="title"
