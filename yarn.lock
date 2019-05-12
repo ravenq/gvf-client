@@ -4701,10 +4701,10 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-github-markdown-css@^2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/github-markdown-css/-/github-markdown-css-2.10.0.tgz#0612fed22816b33b282f37ef8def7a4ecabfe993"
-  integrity sha512-RX5VUC54uX6Lvrm226M9kMzsNeOa81MnKyxb3J0G5KLjyoOySOZgwyKFkUpv6iUhooiUZdogk+OTwQPJ4WttYg==
+github-markdown-css@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/github-markdown-css/-/github-markdown-css-3.0.1.tgz#d08db1060d2e182025e0d07d547cfe2afed30205"
+  integrity sha512-9G5CIPsHoyk5ObDsb/H4KTi23J8KE1oDd4KYU51qwqeM+lKWAiO7abpSgCkyWswgmSKBiuE7/4f8xUz7f2qAiQ==
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -6682,14 +6682,14 @@ markdown-it-toc-and-anchor@^4.1.2:
     clone "^2.1.0"
     uslug "^1.0.4"
 
-markdown-it-vue@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/markdown-it-vue/-/markdown-it-vue-1.0.6.tgz#128748519a45fdf5f47d39f52140b4d2dc5541ad"
-  integrity sha512-x9Bfg6il/jfmQYWAMePRwJCeQyna+zOsebtE39EwYWdOx+XDdO3CEv+y51qVcrW6g21q0U/qheuepyWL0GW/8Q==
+markdown-it-vue@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/markdown-it-vue/-/markdown-it-vue-1.0.8.tgz#d4b713bf3e7f7a3f6cb0e24c7627ea812afa8dd4"
+  integrity sha512-yX/TfUAFY01yWTEPyQ88ciH3oFa+OkYhKeOs0jXEHycdQPG9IDhSO0wCmV1RV+YgaiBHau7dHR6Mtu/TajlU8Q==
   dependencies:
     echarts "^4.1.0"
     flowchart.js "^1.11.3"
-    github-markdown-css "^2.10.0"
+    github-markdown-css "^3.0.1"
     markdown-it "^8.4.2"
     markdown-it-abbr "^1.0.4"
     markdown-it-container "^2.0.0"
@@ -6709,7 +6709,7 @@ markdown-it-vue@^1.0.6:
     markdown-it-task-lists "^2.1.1"
     markdown-it-toc-and-anchor "^4.1.2"
     mermaid "^8.0.0-rc.8"
-    vue "^2.5.2"
+    vue "^2.6.6"
 
 markdown-it@^8.4.2:
   version "8.4.2"
@@ -10523,10 +10523,15 @@ vue-virtual-scroller@^1.0.0-rc.2:
     vue-observe-visibility "^0.4.3"
     vue-resize "^0.4.5"
 
-vue@^2.5.2, vue@^2.5.22:
+vue@^2.5.22:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.8.tgz#f21cbc536bfc14f7d1d792a137bb12f69e60ea91"
   integrity sha512-+vp9lEC2Kt3yom673pzg1J7T1NVGuGzO9j8Wxno+rQN2WYVBX2pyo/RGQ3fXCLh2Pk76Skw/laAPCuBuEQ4diw==
+
+vue@^2.6.6:
+  version "2.6.10"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
+  integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
 
 vuex@^3.1.0:
   version "3.1.0"

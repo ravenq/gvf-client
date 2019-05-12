@@ -7,6 +7,26 @@ export default `
 
 Note: Only \`h2\` and \`h3\` are shown in toc.
 
+## alter
+
+Markup is similar to fenced code blocks. Valid container types are \`success\`, \`info\`, \`warning\` and \`error\`.
+
+::: success
+You have got it.
+:::
+
+::: info
+You have new mail.
+:::
+
+::: warning
+You have new mail.
+:::
+
+::: error
+Staying up all night is bad for health.
+:::
+
 ## mermaid charts
 
 ### Flowchart
@@ -34,18 +54,6 @@ sequenceDiagram
     John->Bob: How about you?
     Bob-->John: Jolly good!
 \`\`\`
-
-## Custom Container
-
-Markup is similar to fenced code blocks. Valid container types are \`success\`, \`info\`, \`warning\` and \`danger\`.
-
-::: info
-You have new mail.
-:::
-
-::: danger
-Staying up all night is bad for health.
-:::
 
 ## Definition list
 
