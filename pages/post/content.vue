@@ -41,7 +41,8 @@ export default {
           name: this.post.title,
           content: this.post.summary
         }
-      ]
+      ],
+      script: [{ src: '/baidu-spider.js', async: true, defer: true }]
     }
   },
   data() {

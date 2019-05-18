@@ -50,6 +50,20 @@
 <script>
 import MKData from './example.js'
 export default {
+  head() {
+    return {
+      title: 'markdown-it-vue',
+      meta: [
+        {
+          hid: 'markdown-it-vue',
+          name: 'markdown-it-vue',
+          content:
+            'markdown-it-vue 是一个丰富的 markdown Vue 组件，支持 GFM TOC、GFM style、emoji等通用特性，还支持 mermaid charts、Echarts、flowchart.js 等多种图表，支持 AsciiMath、Latex 等数学公式渲染，支持 errro|warning|info 个性化提示。'
+        }
+      ],
+      script: [{ src: '/baidu-spider.js', async: true, defer: true }]
+    }
+  },
   data() {
     return {
       content: MKData
