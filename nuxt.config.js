@@ -1,6 +1,6 @@
 const pkg = require('./package')
 module.exports = {
-  mode: 'spa',
+  mode: 'universal',
   head: {
     title: 'ravenq 的技术博客',
     meta: [
@@ -15,7 +15,8 @@ module.exports = {
         src: 'https://www.googletagmanager.com/gtag/js?id=UA-138051083-1',
         async: true
       },
-      { src: '/google-analytics.js' }
+      { src: '/google-analytics.js' },
+      { src: '/baidu-spider.js' }
     ]
   },
   loading: { color: '#fff' },
@@ -25,9 +26,9 @@ module.exports = {
     '@/plugins/axios',
     '@/plugins/antd-ui',
     '@/plugins/date-time-formatter',
-    '@/plugins/vue-infinite-scroll',
-    '@/plugins/vue-virtual-scroller',
-    '@/plugins/markdown-it-vue'
+    { src: '@/plugins/vue-infinite-scroll', ssr: false },
+    { src: '@/plugins/vue-virtual-scroller', ssr: false },
+    { src: '@/plugins/markdown-it-vue', ssr: false }
   ],
   modules: ['@nuxtjs/axios'],
   axios: {

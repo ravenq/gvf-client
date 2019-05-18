@@ -8,24 +8,36 @@ export const state = () => ({
 export const mutations = {
   setUser(state, data) {
     state.user = data
-    window.sessionStorage.token = data.token
-    window.sessionStorage.user = JSON.stringify(data)
+    if (process.client) {
+      window.sessionStorage.token = data.token
+      window.sessionStorage.user = JSON.stringify(data)
+    }
   }
 }
 
 export const getters = {
   isAuthenticated(state) {
-    return !!window.sessionStorage.token || state.user.token
+    if (process.client) {
+      return !!window.sessionStorage.token || state.user.token
+    }
   },
   token(state) {
-    return window.sessionStorage.token || state.user.token
+    if (process.client) {
+      return window.sessionStorage.token || state.user.token
+    }
   },
   user(state) {
-    const strUser = window.sessionStorage.user
-    if (strUser) {
-      return JSON.parse(strUser)
+    if (process.client) {
+      const strUser = window.sessionStorage.user
+      if (strUser) {
+        return JSON.parse(strUser)
+      } else {
+        return state.user
+      }
     } else {
-      return state.user
+      return {
+        id: null
+      }
     }
   }
 }

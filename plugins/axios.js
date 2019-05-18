@@ -3,9 +3,11 @@ import isEqual from 'lodash.isequal'
 
 export default function({ $axios, redirect }) {
   $axios.onRequest(config => {
-    const token = window.sessionStorage.token
-    if (token) {
-      config.headers.Session = token
+    if (process.client) {
+      const token = window.sessionStorage.token
+      if (token) {
+        config.headers.Session = token
+      }
     }
   })
 

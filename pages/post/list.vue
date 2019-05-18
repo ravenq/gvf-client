@@ -71,6 +71,7 @@
 <script>
 import truncate from 'lodash.truncate'
 import PostInfo from '~/components/post-info'
+import debounce from 'lodash.debounce'
 
 export default {
   layout: 'post',
@@ -82,7 +83,8 @@ export default {
       postList: [],
       loading: false,
       busy: false,
-      loadOffset: 0
+      loadOffset: 0,
+      postMap: {}
     }
   },
   methods: {
@@ -101,16 +103,22 @@ export default {
     truncateSummary(val) {
       return truncate(val, { length: 300 })
     },
-    handleInfiniteOnLoad() {
+    handleInfiniteOnLoad: debounce(function() {
       this.loading = true
       this.$api.getPostList(this.loadOffset).then(res => {
         if (res.data) {
-          this.postList = this.postList.concat(res.data)
+          for (const item of res.data) {
+            if (!this.postMap[item.id]) {
+              this.postList.push(item)
+              this.postMap[item.id] = true
+            }
+          }
+          // this.postList = this.postList.concat(res.data)
         }
         this.loading = false
-        this.loadOffset += 10
       })
-    }
+      this.loadOffset += 10
+    }, 500)
   }
 }
 </script>

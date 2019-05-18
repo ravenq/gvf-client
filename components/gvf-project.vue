@@ -1,7 +1,7 @@
 <template>
   <section>
     <a-card
-      id="aboutme-container"
+      id="gvf-project-container"
       :bordered="false"
       style="width: 240px"
     >
@@ -9,6 +9,7 @@
         class="avatar"
         src="/gvf-project.png"
       >
+      <img src="/ravenq-qr.png" class="ravenq-qr">
       <a-card-meta title="The GVF Project" style="text-align: center">
         <template slot="description">
           <p style="text-align: justify">
@@ -68,27 +69,30 @@ export default {}
 </script>
 
 <style>
-#aboutme-container .ant-card-body {
+#gvf-project-container .ant-card-body {
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
-#aboutme-container .avatar {
-  margin-left: 22px;
-  width: 128px;
-  height: 90px;
+#gvf-project-container .avatar {
+  width: 100px;
+  height: 75px;
   border-radius: 4px;
 }
 
-#aboutme-container .project-title {
+#gvf-project-container .project-title {
   margin-top: -2px;
   margin-right: 4px;
   margin-bottom: 8px;
 }
 
-#aboutme-container .project-title2 {
+#gvf-project-container .project-title2 {
   margin-top: -2px;
   margin-right: 13px;
   margin-bottom: 8px;
+}
+
+#gvf-project-container .ravenq-qr {
+  width: 87px;
 }
 </style>

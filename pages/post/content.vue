@@ -32,6 +32,18 @@ export default {
     PostInfo,
     Comments
   },
+  head() {
+    return {
+      title: this.post.title,
+      meta: [
+        {
+          hid: this.post.title,
+          name: this.post.title,
+          content: this.post.summary
+        }
+      ]
+    }
+  },
   data() {
     return {
       post: {
@@ -62,16 +74,25 @@ export default {
       return `post-${this.post.id}`
     }
   },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      const id = to.query.id
-      vm.$api.getPost(id).then(res => {
-        if (!isNil(res.data)) {
-          vm.post = res.data
+  asyncData({ $api, query }) {
+    return $api.getPost(query.id).then(res => {
+      if (!isNil(res.data)) {
+        return {
+          post: res.data
         }
-      })
+      }
     })
   },
+  // beforeRouteEnter(to, from, next) {
+  //   next(vm => {
+  //     const id = to.query.id
+  //     vm.$api.getPost(id).then(res => {
+  //       if (!isNil(res.data)) {
+  //         vm.post = res.data
+  //       }
+  //     })
+  //   })
+  // },
   methods: {
     handleLike() {
       this.$api
