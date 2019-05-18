@@ -40,7 +40,7 @@ yarn start
 ```sh
 yarn global add pm2
 
-pm2 start yarn --name "gvf-amdin" -- run start
+pm2 start yarn --name "gvf-client" -- start
 ```
 
 ## docker
