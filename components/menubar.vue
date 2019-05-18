@@ -41,7 +41,7 @@
         :style="{ lineHeight: '64px', width: '100%' }"
       >
         <a-menu-item key="post">
-          <router-link to="/post/list">
+          <router-link to="/">
             <a-icon id="menu-icon" type="book" />Blog
           </router-link>
         </a-menu-item>
