@@ -90,10 +90,14 @@ export default {
   asyncData({ $api }) {
     // make it faster.
     return $api.getPostList().then(res => {
-      debugger
       if (res.data) {
+        const map = {}
+        for (const item of res.data) {
+          map[item.id] = item
+        }
         return {
-          postList: res.data
+          postList: res.data,
+          postMap: map
         }
       }
     })

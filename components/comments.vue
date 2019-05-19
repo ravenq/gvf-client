@@ -192,6 +192,7 @@ export default {
 .login-github {
   font-size: 32px;
   margin-right: 4px;
+  cursor: pointer;
 }
 .login-container {
   position: absolute;
