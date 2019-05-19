@@ -13,23 +13,65 @@
                 <div class="coder-say">
                   一个码农的技术博客，记录一些技术问题和感想。同时开源本博源码(下方开源项目)，和天下的码农们共同学习，共同进步ヾ(◍°∇°◍)ﾉﾞ
                 </div>
-                <ul>
-                  <li>微信公众号：Ravenq 的程序之路</li>
-                  <li>GitHub: <a href="https://www.github.com/ravenq" target="_blank">https://www.github.com/ravenq</a></li>
-                  <li>知乎： <a href="https://www.zhihu.com/people/aquarius-for/activities" target="_blank">https://www.zhihu.com/people/aquarius-for/activities</a></li>
-                  <li>OSChina： <a href="https://my.oschina.net/ravenq" target="_blank">https://my.oschina.net/ravenq</a></li>
-                  <li>Email： flw_dream@126.com</li>
+                <ul class="my-acounts">
+                  <li>
+                    <img class="my-acount-logo" src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/wechart-logo.svg">
+                    微信公众号：Ravenq 的程序之路
+                  </li>
+                  <li>
+                    <img class="my-acount-logo" src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/github-logo.svg">
+                    GitHub: <a href="https://www.github.com/ravenq" target="_blank">https://www.github.com/ravenq</a>
+                  </li>
+                  <li>
+                    <img class="my-acount-logo" src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/zhihu-logo.svg">
+                    知乎：<a href="https://www.zhihu.com/people/aquarius-for/activities" target="_blank">https://www.zhihu.com/people/aquarius-for/activities</a>
+                  </li>
+                  <li>
+                    <img class="my-acount-logo" src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/oschina-logo.svg">
+                    OSChina：<a href="https://my.oschina.net/ravenq" target="_blank">https://my.oschina.net/ravenq</a>
+                  </li>
+                  <li>
+                    <a-icon type="mail" style="color: #00a2ff" />
+                    Email： flw_dream@126.com
+                  </li>
                 </ul>
               </div>
             </a-col>
           </a-row>
+        </a-card>
+        <a-card class="my-profile-mobile">
+          <img
+            slot="cover"
+            alt="ravenq-qr"
+            src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/ravenq-qr.png"
+            class="open-source-project-logo"
+          >
+          <a-card-meta
+            description="一个码农的技术博客，记录一些技术问题和感想。同时开源本博源码(下方开源项目)，和天下的码农们共同学习，共同进步ヾ"
+            class="open-source-project-description"
+          />
+          <template slot="actions" class="ant-card-actions">
+            <a href="https://www.github.com/ravenq" target="_brank">
+              <img class="my-acount-logo" src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/github-logo.svg">
+            </a>
+            <a href="https://my.oschina.net/ravenq" target="_brank">
+              <img class="my-acount-logo" src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/oschina-logo.svg">
+            </a>
+            <a href="https://blog.csdn.net/my___dream" target="_brank">
+              <img class="my-acount-logo" src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/csdn-logo.svg">
+            </a>
+            <img class="my-acount-logo" src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/jianshu-logo.svg">
+            <a href="https://www.zhihu.com/people/aquarius-for/activities" target="_brank">
+              <img class="my-acount-logo" src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/zhihu-logo.svg">
+            </a>
+          </template>
         </a-card>
         <h2 style="margin-top: 12px;">
           <strong>我的开源项目</strong>
         </h2>
         <a-row type="flex" justify="space-between">
           <a-col>
-            <a-card hoverable class="open-source-project-card">
+            <a-card class="open-source-project-card">
               <img
                 slot="cover"
                 alt="markdown-it-vue"
@@ -42,7 +84,7 @@
               />
               <template slot="actions" class="ant-card-actions">
                 <iframe
-                  src="//ghbtns.com/github-btn.html?user=ravenq&repo=markdown-it-vue&type=star&count=true"
+                  src="https://ghbtns.com/github-btn.html?user=ravenq&repo=markdown-it-vue&type=star&count=true"
                   class="github-start-btn"
                   allowtransparency="true"
                   frameborder="0"
@@ -58,7 +100,7 @@
             </a-card>
           </a-col>
           <a-col>
-            <a-card hoverable class="open-source-project-card">
+            <a-card class="open-source-project-card">
               <img
                 slot="cover"
                 alt="vue-cli-plugin-component-lib"
@@ -92,7 +134,7 @@
             </a-card>
           </a-col>
           <a-col>
-            <a-card hoverable class="open-source-project-card">
+            <a-card class="open-source-project-card">
               <img
                 slot="cover"
                 alt="GVF Projet"
@@ -201,5 +243,26 @@ export default {
   width: 88px;
   margin: auto;
   margin-top: 12px;
+}
+.my-acount-logo {
+  width: 16px;
+  cursor: pointer;
+}
+@media only screen and (min-width: 320px) {
+  .my-profile-mobile {
+    display: block;
+  }
+  .my-profile-card {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .my-profile-mobile {
+    display: none;
+  }
+  .my-profile-card {
+    display: block;
+  }
 }
 </style>
