@@ -1,29 +1,11 @@
 <template>
-  <a-spin :spinning="spinning">
+  <a-spin id="comments-container" :spinning="spinning">
     <div class="comments-header-title">
       {{ comments.length }} 个评论
     </div>
     <div>
-      <a-list
-        v-if="comments.length"
-        :data-source="comments"
-        item-layout="horizontal"
-      >
-        <a-list-item slot="renderItem" slot-scope="item">
-          <a-comment
-            :author="item.author.nick"
-            :avatar="item.author.avatarUrl"
-            :content="item.content"
-            :datetime="item.createTime"
-          >
-            <div class="reply-container">
-              <span class="reply-item"><a-icon type="like" /> 0</span>
-              <span class="reply-item"><a-icon type="dislike" /> 0</span>
-              <span slot="actions" class="reply-item">回复</span>
-            </div>
-          </a-comment>
-        </a-list-item>
-      </a-list>
+      <comment-list :comment-id="commentId" :comments="comments" />
+      <a-divider />
       <a-comment>
         <a-avatar
           slot="avatar"
@@ -32,7 +14,7 @@
         />
         <div slot="content">
           <a-form-item>
-            <div v-if="!isAuthenticated" class="login-container">
+            <div v-show="!isAuthenticated" class="login-container">
               <a-row>
                 <a-col :span="12">
                   <div class="login-title">
@@ -44,7 +26,7 @@
                 </a-col>
               </a-row>
             </div>
-            <a-textarea v-model="comment.content" :rows="4" :disabled="!isAuthenticated" />
+            <a-textarea id="aa" v-model="comment.content" :rows="4" :disabled="!isAuthenticated" />
           </a-form-item>
           <a-form-item>
             <a-button
@@ -68,7 +50,12 @@ import { mapGetters, mapMutations } from 'vuex'
 import clone from 'lodash.clone'
 import MobileDetect from 'mobile-detect'
 import { GITHUB } from '~/config'
+import CommentList from './comment-list'
+
 export default {
+  components: {
+    CommentList
+  },
   props: {
     commentId: {
       type: String,
@@ -81,13 +68,16 @@ export default {
       comments: [],
       submitting: false,
       comment: {
+        isTop: true,
         parent: null,
         commentId: null,
         author: {
           id: null
         },
         content: null,
-        user: this.user
+        user: this.user,
+        likes: 0,
+        dislies: 0
       }
     }
   },
@@ -103,7 +93,21 @@ export default {
       handler(val) {
         if (val) {
           this.$api.getCommentList(val).then(res => {
-            this.comments = res.data || []
+            if (res.data) {
+              const init = arr => {
+                if (Array.isArray(arr)) {
+                  arr.map(i => {
+                    i.replyContent = ''
+                    i.showReply = false
+                    if (Array.isArray(i.replies)) {
+                      init(i.replies)
+                    }
+                  })
+                }
+              }
+              init(res.data)
+              this.comments = res.data
+            }
           })
         }
       }
@@ -175,34 +179,33 @@ export default {
 }
 </script>
 
-<style lange="scss" scoped>
-.comments-header-title {
+<style lange="scss">
+#comments-container .ant-comment {
+  width: 100%;
+}
+#comments-container .comments-header-title {
   margin-top: 10px;
 }
-.alter-login {
+#comments-container .alter-login {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-.login-title {
+#comments-container .login-title {
   text-align: right;
   margin-right: 8px;
   font-size: 20px;
   margin-top: -4px;
 }
-.login-github {
+#comments-container .login-github {
   font-size: 32px;
   margin-right: 4px;
   cursor: pointer;
 }
-.login-container {
+#comments-container .login-container {
   position: absolute;
   z-index: 100;
   text-align: center;
   width: 100%;
   margin-top: 30px;
-}
-.reply-item {
-  margin-right: 8px;
-  cursor: pointer;
 }
 </style>

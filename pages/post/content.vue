@@ -132,7 +132,7 @@ export default {
 }
 .like-container {
   text-align: center;
-  font-size: 48px;
+  font-size: 32px;
 }
 .like-span-left {
   margin-right: 32px;
