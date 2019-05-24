@@ -39,4 +39,10 @@ export default class Api {
   getCommentList(id) {
     return this.axios.get(`/comments/fetch/${id}`)
   }
+  likeComment(id) {
+    return this.axios.get(`/comments/like/${id}`)
+  }
+  dislikeComment(id) {
+    return this.axios.get(`/comments/dislike/${id}`)
+  }
 }
