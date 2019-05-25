@@ -90,7 +90,9 @@ export default {
           commentId: this.commentId,
           author: this.user,
           content: item.replyContent,
-          replyContent: ''
+          replyContent: '',
+          likes: 0,
+          dislikes: 0
         }
         this.$api.addComment(comment).then(res => {
           item.replies = item.replies || []
