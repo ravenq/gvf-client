@@ -19,6 +19,6 @@ addons:
     - www.aqcoder.com:29371
 
 after_success:
-  - ssh -p 29371 root@www.aqcoder.com "rm -rf /var/gvf-client/.nuxt"
-  - scp -P29371 -r .nuxt root@www.aqcoder.com:/var/gvf-client/
-  - ssh -p 29371 root@www.aqcoder.com "pm2 restart gvf-client"
+  - ssh -p $ssh_port $ssh_host "rm -rf /var/gvf-client/.nuxt"
+  - scp -P$ssh_port -r .nuxt ${ssh_host}:/var/gvf-client/
+  - ssh -p $ssh_port $ssh_host "pm2 restart gvf-client"
