@@ -51,7 +51,7 @@
         </div>
         <router-link
           slot="title"
-          :to="{path:'/post/content', query:{id: item.id}}"
+          :to="{name:'post-id', params:{id: item.id}}"
         >
           <img
             class="post-type-img"

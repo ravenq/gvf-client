@@ -75,8 +75,9 @@ export default {
       return `post-${this.post.id}`
     }
   },
-  asyncData({ $api, query }) {
-    return $api.getPost(query.id).then(res => {
+  asyncData({ $api, query, params }) {
+    const id = query.id || params.id
+    return $api.getPost(id).then(res => {
       if (!isNil(res.data)) {
         return {
           post: res.data
