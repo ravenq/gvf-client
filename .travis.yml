@@ -16,7 +16,7 @@ before_install:
 
 addons:
   ssh_known_hosts:
-    - ${ssh_host}:29371
+    - 198.181.45.145:29371
 
 after_success:
   - ssh -p $ssh_port ${ssh_user}@$ssh_host "rm -rf /var/gvf-client/.nuxt"
