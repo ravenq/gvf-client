@@ -93,6 +93,6 @@ export default {}
 }
 
 #gvf-project-container .ravenq-qr {
-  width: 87px;
+  width: 85px;
 }
 </style>

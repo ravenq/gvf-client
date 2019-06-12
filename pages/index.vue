@@ -1,72 +1,74 @@
 <template>
-  <a-list
-    v-infinite-scroll="handleInfiniteOnLoad"
-    item-layout="vertical"
-    size="large"
-    style="height: 100%"
-    :data-source="postList"
-    :infinite-scroll-disabled="busy"
-    :infinite-scroll-distance="10"
-  >
-    <a-list-item
-      :key="item.index"
-      slot="renderItem"
-      slot-scope="item"
+  <div>
+    <a-list
+      v-infinite-scroll="handleInfiniteOnLoad"
+      item-layout="vertical"
+      size="large"
+      style="height: 100%"
+      :data-source="postList"
+      :infinite-scroll-disabled="busy"
+      :infinite-scroll-distance="10"
     >
-      <template slot="actions">
-        <span>
-          <a-icon
-            type="eye-o"
-            style="margin-right: 8px"
-          />
-          {{ item.visit || 0 }}
-        </span>
-      </template>
-      <template slot="actions">
-        <span>
-          <a-icon
-            type="like-o"
-            style="margin-right: 8px"
-          />
-          {{ item.likes || 0 }}
-        </span>
-      </template>
-      <template slot="actions">
-        <span>
-          <a-icon
-            type="message"
-            style="margin-right: 8px"
-          />
-          {{ item.commentsCount || 0 }}
-        </span>
-      </template>
-      <a-list-item-meta>
-        <div slot="description">
-          <post-info
-            :category="item.category.name"
-            :tags="item.tags"
-            :visit="item.visit"
-            :pub-time="item.pubTime"
-          />
-        </div>
-        <router-link
-          slot="title"
-          :to="{name:'post-id', params:{id: item.id}}"
-        >
-          <img
-            class="post-type-img"
-            :src="postTypeUrl(item.postType)"
+      <a-list-item
+        :key="item.index"
+        slot="renderItem"
+        slot-scope="item"
+      >
+        <template slot="actions">
+          <span>
+            <a-icon
+              type="eye-o"
+              style="margin-right: 8px"
+            />
+            {{ item.visit || 0 }}
+          </span>
+        </template>
+        <template slot="actions">
+          <span>
+            <a-icon
+              type="like-o"
+              style="margin-right: 8px"
+            />
+            {{ item.likes || 0 }}
+          </span>
+        </template>
+        <template slot="actions">
+          <span>
+            <a-icon
+              type="message"
+              style="margin-right: 8px"
+            />
+            {{ item.commentsCount || 0 }}
+          </span>
+        </template>
+        <a-list-item-meta>
+          <div slot="description">
+            <post-info
+              :category="item.category.name"
+              :tags="item.tags"
+              :visit="item.visit"
+              :pub-time="item.pubTime"
+            />
+          </div>
+          <router-link
+            slot="title"
+            :to="{name:'post-id', params:{id: item.id}}"
           >
-          {{ item.title }}
-        </router-link>
-      </a-list-item-meta>
-      <div>{{ truncateSummary(item.summary) }}</div>
-    </a-list-item>
-    <a-spin
-      v-if="loading && !busy"
-      class="post-list-loading"
-    />
-  </a-list>
+            <img
+              class="post-type-img"
+              :src="postTypeUrl(item.postType)"
+            >
+            {{ item.title }}
+          </router-link>
+        </a-list-item-meta>
+        <div>{{ truncateSummary(item.summary) }}</div>
+      </a-list-item>
+    </a-list>
+    <div v-if="loading && !busy" class="post-list-loading">
+      <a-spin />
+      <span style="margin-left: 8px;">正在加载...</span>
+    </div>
+  </div>
 </template>
 <script>
 import truncate from 'lodash.truncate'
@@ -145,10 +147,7 @@ export default {
   height: 600px;
 }
 .post-list-loading {
-  position: absolute;
-  top: 30px;
-  bottom: 40px;
-  width: 100%;
+  margin-top: 8px;
   text-align: center;
 }
 .post-type-img {
