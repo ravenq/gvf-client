@@ -33,12 +33,13 @@ export default {
     Comments
   },
   head() {
+    const title = this.post.title + ' - Ravenq的技术博客'
     return {
-      title: this.post.title,
+      title: title,
       meta: [
         {
-          hid: this.post.title,
-          name: this.post.title,
+          hid: title,
+          name: title,
           content: this.post.summary
         }
       ],
