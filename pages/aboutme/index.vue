@@ -146,7 +146,7 @@
                 class="open-source-project-description"
               />
               <div>
-                <ul style="margin-top: 0px; margin-bottom: 0px;">
+                <ul style="margin-top: 0px; margin-bottom: 0px; color: rgba(0, 0, 0, 0.45);">
                   <li>gvf-client: 后端服务，使用 Go 构建。</li>
                   <li>gvf-client: 前端项目，使用 Nuxt 构建。</li>
                   <li>gvf-admin: 后台管理项目。</li>
@@ -173,6 +173,45 @@
                 />
                 <iframe
                   src="//ghbtns.com/github-btn.html?user=ravenq&repo=gvf-admin&type=star&count=true"
+                  class="github-start-btn"
+                  allowtransparency="true"
+                  frameborder="0"
+                  scrolling="0"
+                  width="110"
+                  height="20"
+                />
+              </template>
+            </a-card>
+          </a-col>
+          <a-col>
+            <a-card class="open-source-project-card">
+              <img
+                slot="cover"
+                alt="vscode-goto-node-modules"
+                src="https://ravenq-1251588610.cos.ap-guangzhou.myqcloud.com/vscode-goto-node-modules.png"
+                class="open-source-project-logo-vscode-goto-node-modules"
+              >
+              <a-card-meta
+                description="vscode-goto-node-modules 是一个能够快速定位引用模块在 node_modules 目录下位置的 VSCode 插件。"
+                class="open-source-project-description"
+              />
+              <div>
+                <br>
+                <span style="color: rgba(0, 0, 0, 0.45);">插件市场：</span>
+                <a href="https://marketplace.visualstudio.com/items?itemName=ravenq.vscode-goto-node-modules">vscode-goto-node-modules</a>
+              </div>
+              <template slot="actions" class="ant-card-actions">
+                <iframe
+                  src="//ghbtns.com/github-btn.html?user=ravenq&repo=vscode-goto-node-modules&type=star&count=true"
+                  class="github-start-btn"
+                  allowtransparency="true"
+                  frameborder="0"
+                  scrolling="0"
+                  width="110"
+                  height="20"
+                />
+                <iframe
+                  src="//ghbtns.com/github-btn.html?user=ravenq&repo=vscode-goto-node-modules&type=fork&count=true"
                   class="github-start-btn"
                   allowtransparency="true"
                   frameborder="0"
@@ -244,6 +283,13 @@ export default {
   margin: auto;
   margin-top: 12px;
 }
+
+.open-source-project-logo-vscode-goto-node-modules {
+  width: 88px;
+  margin: auto;
+  margin-top: 12px;
+}
+
 .my-acount-logo {
   width: 16px;
   cursor: pointer;
