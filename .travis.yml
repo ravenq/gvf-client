@@ -16,9 +16,9 @@ before_install:
 
 addons:
   ssh_known_hosts:
-    - 198.181.45.145:29371
+    - wwww.aqcoder.com
 
 after_success:
-  - ssh -p $ssh_port ${ssh_user}@$ssh_host "rm -rf /var/gvf-client/.nuxt"
-  - scp -P$ssh_port -r .nuxt ${ssh_user}@${ssh_host}:/var/gvf-client/
-  - ssh -p $ssh_port ${ssh_user}@$ssh_host "pm2 restart gvf-client"
+  - ssh root@www.aqcodeer.com "rm -rf /var/gvf-client/.nuxt"
+  - scp -r .nuxt root@www.aqcodeer.com:/var/gvf-client/
+  - ssh root@www.aqcodeer.com "pm2 restart gvf-client"
