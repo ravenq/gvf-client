@@ -19,6 +19,6 @@ addons:
     - wwww.aqcoder.com
 
 after_success:
-  - ssh root@www.aqcoder.com "rm -rf /var/gvf-client/.nuxt"
+  - ssh root@www.aqcoder.com -o StrictHostKeyChecking=no "rm -rf /var/gvf-client/.nuxt"
   - scp -r .nuxt root@www.aqcoder.com:/var/gvf-client/
-  - ssh root@www.aqcoder.com "pm2 restart gvf-client"
+  - ssh root@www.aqcoder.com -o StrictHostKeyChecking=no "pm2 restart gvf-client"
