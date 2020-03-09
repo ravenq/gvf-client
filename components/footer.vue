@@ -7,6 +7,7 @@
       </a>
     </div>
     <div>Power by GVF project. </div>
+    <a href="http://beian.miit.gov.cn">闽ICP备19025509号-1</a>
   </section>
 </template>
 
