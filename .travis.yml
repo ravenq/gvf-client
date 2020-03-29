@@ -16,9 +16,9 @@ before_install:
 
 addons:
   ssh_known_hosts:
-    - wwww.aqcoder.com
+    - 122.51.246.153
 
 after_success:
-  - ssh root@www.aqcoder.com -o StrictHostKeyChecking=no "rm -rf /var/www/gvf-client/.nuxt"
-  - scp -r .nuxt root@www.aqcoder.com:/var/www/gvf-client/
-  - ssh root@www.aqcoder.com -o StrictHostKeyChecking=no "pm2 restart gvf-client"
+  - ssh root@122.51.246.153 -o StrictHostKeyChecking=no "rm -rf /var/www/gvf-client/.nuxt"
+  - scp -r .nuxt root@122.51.246.153:/var/www/gvf-client/
+  - ssh root@122.51.246.153 -o StrictHostKeyChecking=no "pm2 restart gvf-client"
