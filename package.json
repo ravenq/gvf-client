@@ -23,7 +23,7 @@
     "lodash.isstring": "^4.0.1",
     "lodash.split": "^4.4.2",
     "lodash.truncate": "^4.4.2",
-    "markdown-it-vue": "^1.0.8",
+    "markdown-it-vue": "^1.1.5",
     "mobile-detect": "^1.4.3",
     "nuxt": "^2.7.1",
     "vue-infinite-scroll": "^2.0.2",
